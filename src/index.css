@@ -1,3 +1,4 @@
+@import url('https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -133,9 +134,16 @@
 /* ⚙️ 2. The Updated Tailwind v4 Configuration Layer (The Fix!) */
 /* Wrapping these inside functions allows opacity modifiers (like /50) to process cleanly */
 @theme inline {
-  --font-sans: "Inter", sans-serif;
+
+  /* 🔤 Custom Font Families Configuration */
+  --font-sans: "Inter", "system-ui", "-apple-system", sans-serif; /* Overwrites utility class: font-sans */
+  --font-serif: "Georgia", "serif";                               /* Overwrites utility class: font-serif */
+  --font-mono: "JetBrains Mono", "monospace";                      /* Overwrites utility class: font-mono */
+  --font-manrope: "Manrope", "sans-serif";   
+
+  /* --font-sans: "Inter", sans-serif;
   --font-inter: "Inter", "sans-serif";
-  --font-manrope: "Manrope", "sans-serif";
+  --font-manrope: "Manrope", "sans-serif"; */
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -285,7 +293,9 @@
   }
   body {
     @apply bg-background text-foreground min-h-svh w-full;
-    font-family: var(--font-family, "Inter", sans-serif);
+    /* font-family: var(--font-family, "Inter", sans-serif); */
+    --tw-leading: initial; 
+    font-family: var(--font-sans); 
   }
   /* Lock body scroll when drawer is open */
   body.drawer-open {
