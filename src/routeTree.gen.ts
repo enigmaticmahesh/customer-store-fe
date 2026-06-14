@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeContactUsIndexRouteImport } from './routes/_home/contact-us/index'
+import { Route as HomeAboutUsIndexRouteImport } from './routes/_home/about-us/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
@@ -28,6 +29,11 @@ const HomeContactUsIndexRoute = HomeContactUsIndexRouteImport.update({
   path: '/contact-us/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeAboutUsIndexRoute = HomeAboutUsIndexRouteImport.update({
+  id: '/about-us/',
+  path: '/about-us/',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
   id: '/_auth/login/',
   path: '/login/',
@@ -37,11 +43,13 @@ const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login/': typeof AuthLoginIndexRoute
+  '/about-us/': typeof HomeAboutUsIndexRoute
   '/contact-us/': typeof HomeContactUsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof AuthLoginIndexRoute
+  '/about-us': typeof HomeAboutUsIndexRoute
   '/contact-us': typeof HomeContactUsIndexRoute
 }
 export interface FileRoutesById {
@@ -49,14 +57,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteRouteWithChildren
   '/_auth/login/': typeof AuthLoginIndexRoute
+  '/_home/about-us/': typeof HomeAboutUsIndexRoute
   '/_home/contact-us/': typeof HomeContactUsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login/' | '/contact-us/'
+  fullPaths: '/' | '/login/' | '/about-us/' | '/contact-us/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/contact-us'
-  id: '__root__' | '/' | '/_home' | '/_auth/login/' | '/_home/contact-us/'
+  to: '/' | '/login' | '/about-us' | '/contact-us'
+  id:
+    | '__root__'
+    | '/'
+    | '/_home'
+    | '/_auth/login/'
+    | '/_home/about-us/'
+    | '/_home/contact-us/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -88,6 +103,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeContactUsIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/_home/about-us/': {
+      id: '/_home/about-us/'
+      path: '/about-us'
+      fullPath: '/about-us/'
+      preLoaderRoute: typeof HomeAboutUsIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/_auth/login/': {
       id: '/_auth/login/'
       path: '/login'
@@ -99,10 +121,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface HomeRouteRouteChildren {
+  HomeAboutUsIndexRoute: typeof HomeAboutUsIndexRoute
   HomeContactUsIndexRoute: typeof HomeContactUsIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
+  HomeAboutUsIndexRoute: HomeAboutUsIndexRoute,
   HomeContactUsIndexRoute: HomeContactUsIndexRoute,
 }
 
