@@ -3,3 +3,16 @@ export function formatPriceString(price: string) {
         +price,
     );
 };
+
+export function getInitials(fullName: string = 'Unknown') {
+    const names = fullName.split(' ')
+    if (names.length < 2) {
+        return names.at(0)!.at(0)
+    }
+    if (names.length < 3) {
+        return `${names.at(0)!.at(0)}${names.at(1)!.at(0)}`
+    }
+    if (names.length > 2) {
+        return `${names.at(0)!.at(0)}${names.at(-1)!.at(0)}`
+    }
+}

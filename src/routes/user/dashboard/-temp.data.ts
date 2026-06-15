@@ -1,0 +1,975 @@
+export const dashboard = {
+    "invoice_message_first": {
+        "en": "Thank You",
+        "de": "Danke"
+    },
+    "invoice_message_last": {
+        "en": "Your order have been received !",
+        "de": "Ihre Bestellung ist eingegangen!"
+    },
+    "print_button": {
+        "en": "Print Invoice",
+        "de": "Rechnung Drucken"
+    },
+    "download_button": {
+        "en": "Download Invoice",
+        "de": "Download Rechnung"
+    },
+    "dashboard_title": {
+        "en": "Dashboard",
+        "de": "Armaturenbrett"
+    },
+    "total_order": {
+        "en": "Total Orders",
+        "de": "Gesamtbestellungen"
+    },
+    "pending_order": {
+        "en": "Pending Orders",
+        "de": "Ausstehende Bestellungen"
+    },
+    "processing_order": {
+        "en": "Processing Order",
+        "de": "Bearbeitungsauftrag"
+    },
+    "complete_order": {
+        "en": "Complete Orders",
+        "de": "Bestellungen abschließen"
+    },
+    "recent_order": {
+        "en": "Recent Orders",
+        "de": "letzte Bestellungen"
+    },
+    "my_order": {
+        "en": "My Orders",
+        "de": "Meine Bestellungen"
+    },
+    "update_profile": {
+        "en": "Update Profile",
+        "de": "Profil aktualisieren"
+    },
+    "full_name": {
+        "en": "Full Name",
+        "de": "Vollständiger Name"
+    },
+    "address": {
+        "en": "Address",
+        "de": "Adresse"
+    },
+    "user_phone": {
+        "en": "Phone/Mobile",
+        "de": "Mobiltelefon"
+    },
+    "user_email": {
+        "en": "Email Address",
+        "de": "E-Mail-Adresse"
+    },
+    "update_button": {
+        "en": "Update Profile",
+        "de": "Profil aktualisieren"
+    },
+    "current_password": {
+        "en": "Current Password",
+        "de": "Aktuelles Passwort"
+    },
+    "new_password": {
+        "en": "New Password",
+        "de": "Neues Kennwort"
+    },
+    "change_password": {
+        "en": "Change Password",
+        "de": "Kennwort ändern"
+    }
+}
+
+export const data = {
+    "orders": [
+        {
+            "_id": "643b820695705e0008499525",
+            "user": "6439713c1d8869133e8881e9",
+            "invoice": 10004,
+            "cart": [
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 112.72,
+                        "price": 112.72
+                    },
+                    "categories": [
+                        "62d2bbd22e63b40520194f1b",
+                        "632aca2b4d87ff2494210be8",
+                        "632aca374d87ff2494210bf0",
+                        "632aca3d4d87ff2494210bf8",
+                        "632aca454d87ff2494210c00",
+                        "632aca594d87ff2494210c10"
+                    ],
+                    "image": [
+                        "https://i.postimg.cc/ZRynchJY/Green-Leaf-Lettuce-each.jpg"
+                    ],
+                    "tag": [
+                        "[\"lettuce\",\"fresh vegetable\"]"
+                    ],
+                    "variants": [],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c74e",
+                    "slug": "green-leaf-lettuce",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "",
+                    "title": "Green Leaf Lettuce",
+                    "description": {
+                        "en": "Most fresh vegetables are low in calories and have a water content in excess of 70 percent, with only about 3.5 percent protein and less than 1 percent fat. ... The root vegetables include beets, carrots, radishes, sweet potatoes, and turnips. Stem vegetables include asparagus and kohlrabi."
+                    },
+                    "category": {
+                        "_id": "632aca374d87ff2494210bf0",
+                        "name": {
+                            "en": "Fresh Vegetable"
+                        }
+                    },
+                    "stock": 460,
+                    "isCombination": false,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.572Z",
+                    "updatedAt": "2023-04-14T16:00:34.736Z",
+                    "sales": 3,
+                    "id": "643970cde58a401b6c62c74e",
+                    "variant": {
+                        "discount": 0,
+                        "originalPrice": 112.72,
+                        "price": 112.72
+                    },
+                    "price": 112.72,
+                    "originalPrice": 112.72,
+                    "quantity": 4,
+                    "itemTotal": 450.88
+                },
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 189.74,
+                        "price": 189.74
+                    },
+                    "categories": [
+                        "632ab2864d87ff2494210a8a",
+                        "63f07c074b86ed26b0528bd3"
+                    ],
+                    "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                    "tag": [
+                        "[\"baby care\",\"baby accessories\"]"
+                    ],
+                    "variants": [
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                            "price": 189.74,
+                            "originalPrice": "189.74",
+                            "quantity": 1138,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-0",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                            "sku": ""
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                            "price": 192.74,
+                            "originalPrice": "192.74",
+                            "quantity": 1142,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-1",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                            "price": 194.74,
+                            "originalPrice": "194.74",
+                            "quantity": 1143,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-2",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                        }
+                    ],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c750",
+                    "slug": "huggies-diaper",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "639dc0f5c2fce72b697282e0",
+                    "title": "Huggies Diaper-Red,Small",
+                    "description": {
+                        "en": "Baby Products are products intended to be used on infants and category under the age of three. Baby products are specially formulated to be mild and non-irritating and use ingredients that are selected for these properties. Baby products include baby shampoos and baby lotions, oils, powders and creams."
+                    },
+                    "category": {
+                        "_id": "63f07c074b86ed26b0528bd3",
+                        "name": {
+                            "en": "Toys Kids"
+                        }
+                    },
+                    "stock": 3423,
+                    "isCombination": true,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.572Z",
+                    "updatedAt": "2023-04-14T16:00:34.735Z",
+                    "sales": 3,
+                    "id": "643970cde58a401b6c62c750-63f078f54b86ed26b05281b3-63f078f54b86ed26b05281b7",
+                    "variant": {
+                        "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                        "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                        "price": 189.74,
+                        "originalPrice": "189.74",
+                        "quantity": 1138,
+                        "discount": "0.00",
+                        "productId": "639dc0f5c2fce72b697282e0-0",
+                        "barcode": "",
+                        "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                        "sku": ""
+                    },
+                    "price": 189.74,
+                    "originalPrice": 189.74,
+                    "quantity": 2,
+                    "itemTotal": 379.48
+                },
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 189.74,
+                        "price": 189.74
+                    },
+                    "categories": [
+                        "632ab2864d87ff2494210a8a",
+                        "63f07c074b86ed26b0528bd3"
+                    ],
+                    "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                    "tag": [
+                        "[\"baby care\",\"baby accessories\"]"
+                    ],
+                    "variants": [
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                            "price": 189.74,
+                            "originalPrice": "189.74",
+                            "quantity": 1138,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-0",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                            "sku": ""
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                            "price": 192.74,
+                            "originalPrice": "192.74",
+                            "quantity": 1142,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-1",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                            "price": 194.74,
+                            "originalPrice": "194.74",
+                            "quantity": 1143,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-2",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                        }
+                    ],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c750",
+                    "slug": "huggies-diaper",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "639dc0f5c2fce72b697282e0",
+                    "title": "Huggies Diaper-Red,Large",
+                    "description": {
+                        "en": "Baby Products are products intended to be used on infants and category under the age of three. Baby products are specially formulated to be mild and non-irritating and use ingredients that are selected for these properties. Baby products include baby shampoos and baby lotions, oils, powders and creams."
+                    },
+                    "category": {
+                        "_id": "63f07c074b86ed26b0528bd3",
+                        "name": {
+                            "en": "Toys Kids"
+                        }
+                    },
+                    "stock": 3423,
+                    "isCombination": true,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.572Z",
+                    "updatedAt": "2023-04-14T16:00:34.735Z",
+                    "sales": 3,
+                    "id": "643970cde58a401b6c62c750-63f078f54b86ed26b05281b3-63f078f54b86ed26b05281b9",
+                    "variant": {
+                        "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                        "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                        "price": 194.74,
+                        "originalPrice": "194.74",
+                        "quantity": 1143,
+                        "discount": "0.00",
+                        "productId": "639dc0f5c2fce72b697282e0-2",
+                        "barcode": "",
+                        "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                    },
+                    "price": 194.74,
+                    "originalPrice": 194.74,
+                    "quantity": 1,
+                    "itemTotal": 194.74
+                },
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 189.74,
+                        "price": 189.74
+                    },
+                    "categories": [
+                        "632ab2864d87ff2494210a8a",
+                        "63f07c074b86ed26b0528bd3"
+                    ],
+                    "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                    "tag": [
+                        "[\"baby care\",\"baby accessories\"]"
+                    ],
+                    "variants": [
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                            "price": 189.74,
+                            "originalPrice": "189.74",
+                            "quantity": 1138,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-0",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg",
+                            "sku": ""
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                            "price": 192.74,
+                            "originalPrice": "192.74",
+                            "quantity": 1142,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-1",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                            "price": 194.74,
+                            "originalPrice": "194.74",
+                            "quantity": 1143,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e0-2",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                        }
+                    ],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c750",
+                    "slug": "huggies-diaper",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "639dc0f5c2fce72b697282e0",
+                    "title": "Huggies Diaper-Red,Medium",
+                    "description": {
+                        "en": "Baby Products are products intended to be used on infants and category under the age of three. Baby products are specially formulated to be mild and non-irritating and use ingredients that are selected for these properties. Baby products include baby shampoos and baby lotions, oils, powders and creams."
+                    },
+                    "category": {
+                        "_id": "63f07c074b86ed26b0528bd3",
+                        "name": {
+                            "en": "Toys Kids"
+                        }
+                    },
+                    "stock": 3423,
+                    "isCombination": true,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.572Z",
+                    "updatedAt": "2023-04-14T16:00:34.735Z",
+                    "sales": 3,
+                    "id": "643970cde58a401b6c62c750-63f078f54b86ed26b05281b3-63f078f54b86ed26b05281b8",
+                    "variant": {
+                        "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                        "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                        "price": 192.74,
+                        "originalPrice": "192.74",
+                        "quantity": 1142,
+                        "discount": "0.00",
+                        "productId": "639dc0f5c2fce72b697282e0-1",
+                        "barcode": "",
+                        "image": "https://i.ibb.co/4Pfnj7x/Huggies-Diaper-Dry-S-Up-To-7-Kg-36-Pcs.jpg"
+                    },
+                    "price": 192.74,
+                    "originalPrice": 192.74,
+                    "quantity": 1,
+                    "itemTotal": 192.74
+                },
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 174.97,
+                        "price": 174.97
+                    },
+                    "categories": [
+                        "632ab2864d87ff2494210a8a",
+                        "632ab2c34d87ff2494210ab2",
+                        "632ab2f04d87ff2494210ad0"
+                    ],
+                    "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg",
+                    "tag": [
+                        "[\"baby care\",\"baby accessories\"]"
+                    ],
+                    "variants": [
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-0",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-1",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b5",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-2",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-3",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-4",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b5",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b8",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-5",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-6",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-7",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b5",
+                            "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b9",
+                            "price": 174.97,
+                            "originalPrice": "174.97",
+                            "quantity": 608,
+                            "discount": "0.00",
+                            "productId": "639dc0f5c2fce72b697282e1-8",
+                            "barcode": "",
+                            "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                        }
+                    ],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c74f",
+                    "slug": "himalaya-powder",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "639dc0f5c2fce72b697282e1",
+                    "title": "Himalaya Powder-Red,Small",
+                    "description": {
+                        "en": "Baby Products are products intended to be used on infants and category under the age of three. Baby products are specially formulated to be mild and non-irritating and use ingredients that are selected for these properties. Baby products include baby shampoos and baby lotions, oils, powders and creams."
+                    },
+                    "category": {
+                        "_id": "632ab2f04d87ff2494210ad0",
+                        "name": {
+                            "en": "Skin Care"
+                        }
+                    },
+                    "stock": 5472,
+                    "isCombination": true,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.572Z",
+                    "updatedAt": "2023-04-14T15:27:09.572Z",
+                    "id": "643970cde58a401b6c62c74f-63f078f54b86ed26b05281b3-63f078f54b86ed26b05281b7",
+                    "variant": {
+                        "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                        "63f078f54b86ed26b05281b6": "63f078f54b86ed26b05281b7",
+                        "price": 174.97,
+                        "originalPrice": "174.97",
+                        "quantity": 608,
+                        "discount": "0.00",
+                        "productId": "639dc0f5c2fce72b697282e1-0",
+                        "barcode": "",
+                        "image": "https://i.ibb.co/9g7vDQJ/Himalaya-Baby-Powder-100g.jpg"
+                    },
+                    "price": 174.97,
+                    "originalPrice": 174.97,
+                    "quantity": 2,
+                    "itemTotal": 349.94
+                },
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 211.96,
+                        "price": 211.96
+                    },
+                    "categories": [
+                        "632aca2b4d87ff2494210be8",
+                        "632aca3d4d87ff2494210bf8",
+                        "632aca374d87ff2494210bf0",
+                        "632aca454d87ff2494210c00",
+                        "632aca594d87ff2494210c10",
+                        "62d2bbd22e63b40520194f1b"
+                    ],
+                    "image": [
+                        "https://i.postimg.cc/L8L3XGcP/Blackberries-1-25-qt.jpg"
+                    ],
+                    "tag": [
+                        "[\"fresh fruits\",\"fruits\",\"vegetable\"]"
+                    ],
+                    "variants": [],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c749",
+                    "slug": "blueberry",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "",
+                    "title": "Blueberry",
+                    "description": {
+                        "en": "In a botanical sense, a fruit is the fleshy or dry ripened ovary of a flowering plant, enclosing the seed or seeds. Apricots, bananas, and grapes, as well as bean pods, corn grains, tomatoes, cucumbers, and (in their shells) acorns and almonds, are all technically fruits."
+                    },
+                    "category": {
+                        "_id": "632aca454d87ff2494210c00",
+                        "name": {
+                            "en": "Fresh Fruits"
+                        }
+                    },
+                    "stock": 201,
+                    "isCombination": false,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.572Z",
+                    "updatedAt": "2023-04-14T15:27:09.572Z",
+                    "id": "643970cde58a401b6c62c749",
+                    "variant": {
+                        "discount": 0,
+                        "originalPrice": 211.96,
+                        "price": 211.96
+                    },
+                    "price": 211.96,
+                    "originalPrice": 211.96,
+                    "quantity": 3,
+                    "itemTotal": 635.88
+                },
+                {
+                    "prices": {
+                        "discount": 0,
+                        "originalPrice": 71.18,
+                        "price": 71.18
+                    },
+                    "categories": [
+                        "632aca2b4d87ff2494210be8",
+                        "632aca3d4d87ff2494210bf8",
+                        "632aca374d87ff2494210bf0",
+                        "632aca454d87ff2494210c00",
+                        "632aca594d87ff2494210c10",
+                        "62d2bbd22e63b40520194f1b"
+                    ],
+                    "image": [
+                        "https://i.postimg.cc/cJL8fjK6/Ahold-Acorn-Squash-1ct.jpg"
+                    ],
+                    "tag": [
+                        "[\"fresh fruits\",\"fruits\",\"vegetable\"]"
+                    ],
+                    "variants": [],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c741",
+                    "slug": "ahold-acorn-squash",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "",
+                    "title": "Ahold Acorn Squash",
+                    "description": {
+                        "en": "Most fresh vegetables are low in calories and have a water content in excess of 70 percent, with only about 3.5 percent protein and less than 1 percent fat. ... The root vegetables include beets, carrots, radishes, sweet potatoes, and turnips. Stem vegetables include asparagus and kohlrabi."
+                    },
+                    "category": {
+                        "_id": "632aca374d87ff2494210bf0",
+                        "name": {
+                            "en": "Fresh Vegetable"
+                        }
+                    },
+                    "stock": 767,
+                    "isCombination": false,
+                    "__v": 0,
+                    "createdAt": "2023-04-14T15:27:09.571Z",
+                    "updatedAt": "2023-04-14T15:27:09.571Z",
+                    "id": "643970cde58a401b6c62c741",
+                    "price": 71.18,
+                    "originalPrice": 71.18,
+                    "quantity": 3,
+                    "itemTotal": 213.54000000000002
+                }
+            ],
+            "user_info": {
+                "name": "Sadio Mane",
+                "email": "sadio@gmail.com",
+                "contact": "01957930034",
+                "address": "Bambali, Sédhiou, Senegal",
+                "city": "Sédhiou",
+                "country": "Senegal",
+                "zipCode": "12354"
+            },
+            "subTotal": 2417.2,
+            "shippingCost": 60,
+            "discount": 0,
+            "total": 2477.2,
+            "shippingOption": "FedEx",
+            "paymentMethod": "Cash",
+            "status": "delivered",
+            "isGuest": false,
+            "createdAt": "2023-04-16T05:05:10.247Z",
+            "updatedAt": "2023-04-16T05:17:18.113Z",
+            "__v": 0
+        },
+        {
+            "_id": "643a888e59101c0008a73158",
+            "user": "6439713c1d8869133e8881e9",
+            "invoice": 10003,
+            "cart": [
+                {
+                    "prices": {
+                        "price": 79.24,
+                        "originalPrice": 79.24,
+                        "discount": 0
+                    },
+                    "categories": [
+                        "632ab2864d87ff2494210a8a",
+                        "632ab2b64d87ff2494210aa7",
+                        "632ab2c34d87ff2494210ab2",
+                        "632ab2d54d87ff2494210ac0",
+                        "632ab2df4d87ff2494210ac8",
+                        "632ab2f04d87ff2494210ad0",
+                        "632ab2f84d87ff2494210ad8",
+                        "632ab2fd4d87ff2494210ae0",
+                        "632ab3044d87ff2494210ae8"
+                    ],
+                    "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg",
+                    "tag": [
+                        "[\"bath\",\"soap\"]"
+                    ],
+                    "variants": [
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b4",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-0",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b4",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-1",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b5",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-2",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b5",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 178,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-3",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        }
+                    ],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c623",
+                    "slug": "nivea-soap",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "639dc0f5c2fce72b697282d7",
+                    "title": "Nivea Soap-Green,A304",
+                    "description": {
+                        "en": "bathroom accessories are items specifically designed for use in a bathroom, such as soap dishes, towel racks, etc. bathroom accessories accessories typically have durable, decorative finishes.",
+                        "es": "",
+                        "de": ""
+                    },
+                    "category": {
+                        "_id": "632ab3044d87ff2494210ae8",
+                        "name": {
+                            "en": "Bath"
+                        }
+                    },
+                    "stock": 715,
+                    "isCombination": true,
+                    "__v": 1,
+                    "createdAt": "2023-04-14T15:27:09.564Z",
+                    "updatedAt": "2023-04-15T11:19:30.619Z",
+                    "sales": 1,
+                    "id": "643970cde58a401b6c62c623-63f078f54b86ed26b05281b4-643a862ca54e9700082034b5",
+                    "variant": {
+                        "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                        "643a862ca54e9700082034b3": "643a862ca54e9700082034b5",
+                        "originalPrice": 79.24,
+                        "price": 79.24,
+                        "quantity": 178,
+                        "discount": 0,
+                        "productId": "639dc0f5c2fce72b697282d7-3",
+                        "barcode": "",
+                        "sku": "",
+                        "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                    },
+                    "price": 79.24,
+                    "originalPrice": 79.24,
+                    "quantity": 1,
+                    "itemTotal": 79.24
+                }
+            ],
+            "user_info": {
+                "name": "John Doe",
+                "email": "email@address.es",
+                "contact": "+345664446",
+                "address": "Boulevard, 5",
+                "city": "Los Angeles",
+                "country": "España",
+                "zipCode": "1808"
+            },
+            "subTotal": 79.24,
+            "shippingCost": 60,
+            "discount": 0,
+            "total": 139.24,
+            "shippingOption": "FedEx",
+            "paymentMethod": "Cash",
+            "status": "delivered",
+            "isGuest": false,
+            "__v": 0,
+            "createdAt": "2026-06-11T14:24:10.198Z",
+            "updatedAt": "2026-06-11T14:24:10.198Z"
+        },
+        {
+            "_id": "643a870e1b35690008f94f90",
+            "user": "6439713c1d8869133e8881e9",
+            "invoice": 10002,
+            "cart": [
+                {
+                    "prices": {
+                        "price": 79.24,
+                        "originalPrice": 79.24,
+                        "discount": 0
+                    },
+                    "categories": [
+                        "632ab2864d87ff2494210a8a",
+                        "632ab2b64d87ff2494210aa7",
+                        "632ab2c34d87ff2494210ab2",
+                        "632ab2d54d87ff2494210ac0",
+                        "632ab2df4d87ff2494210ac8",
+                        "632ab2f04d87ff2494210ad0",
+                        "632ab2f84d87ff2494210ad8",
+                        "632ab2fd4d87ff2494210ae0",
+                        "632ab3044d87ff2494210ae8"
+                    ],
+                    "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg",
+                    "tag": [
+                        "[\"bath\",\"soap\"]"
+                    ],
+                    "variants": [
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b4",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-0",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b4",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-1",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b3",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b5",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-2",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        },
+                        {
+                            "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                            "643a862ca54e9700082034b3": "643a862ca54e9700082034b5",
+                            "originalPrice": 79.24,
+                            "price": 79.24,
+                            "quantity": 179,
+                            "discount": 0,
+                            "productId": "639dc0f5c2fce72b697282d7-3",
+                            "barcode": "",
+                            "sku": "",
+                            "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                        }
+                    ],
+                    "status": "show",
+                    "_id": "643970cde58a401b6c62c623",
+                    "slug": "nivea-soap",
+                    "sku": "",
+                    "barcode": "",
+                    "productId": "639dc0f5c2fce72b697282d7",
+                    "title": "Nivea Soap-Green,",
+                    "description": {
+                        "en": "bathroom accessories are items specifically designed for use in a bathroom, such as soap dishes, towel racks, etc. bathroom accessories accessories typically have durable, decorative finishes.",
+                        "es": ""
+                    },
+                    "category": {
+                        "_id": "632ab3044d87ff2494210ae8",
+                        "name": {
+                            "en": "Bath"
+                        }
+                    },
+                    "stock": 716,
+                    "isCombination": true,
+                    "__v": 1,
+                    "createdAt": "2023-04-14T15:27:09.564Z",
+                    "updatedAt": "2023-04-15T11:12:06.368Z",
+                    "id": "643970cde58a401b6c62c623-63f078f54b86ed26b05281b4-643a862ca54e9700082034b5",
+                    "variant": {
+                        "63f078f54b86ed26b05281b2": "63f078f54b86ed26b05281b4",
+                        "643a862ca54e9700082034b3": "643a862ca54e9700082034b5",
+                        "originalPrice": 79.24,
+                        "price": 79.24,
+                        "quantity": 179,
+                        "discount": 0,
+                        "productId": "639dc0f5c2fce72b697282d7-3",
+                        "barcode": "",
+                        "sku": "",
+                        "image": "https://i.ibb.co/Lt144XM/Nivea-Cr-me-Care-Soap-75g.jpg"
+                    },
+                    "price": 79.24,
+                    "originalPrice": 79.24,
+                    "quantity": 1,
+                    "itemTotal": 79.24
+                }
+            ],
+            "user_info": {
+                "name": "John Doe",
+                "email": "email@address.es",
+                "contact": "+345664446",
+                "address": "Boulevard, 5",
+                "city": "Los Angeles",
+                "country": "España",
+                "zipCode": "1808"
+            },
+            "subTotal": 79.24,
+            "shippingCost": 60,
+            "discount": 0,
+            "total": 139.24,
+            "shippingOption": "FedEx",
+            "paymentMethod": "Cash",
+            "status": "delivered",
+            "isGuest": false,
+            "__v": 0,
+            "createdAt": "2026-06-11T14:24:10.198Z",
+            "updatedAt": "2026-06-11T14:24:10.198Z"
+        }
+    ],
+    "limits": 10,
+    "pages": 1,
+    "pending": 0,
+    "processing": 0,
+    "delivered": 3,
+    "totalDoc": 3
+}

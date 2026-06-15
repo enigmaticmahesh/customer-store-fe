@@ -9,13 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UserRouteRouteImport } from './routes/user/route'
 import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UserIndexRouteImport } from './routes/user/index'
+import { Route as UserOrdersIndexRouteImport } from './routes/user/orders/index'
+import { Route as UserDashboardIndexRouteImport } from './routes/user/dashboard/index'
 import { Route as HomeSearchIndexRouteImport } from './routes/_home/search/index'
 import { Route as HomeContactUsIndexRouteImport } from './routes/_home/contact-us/index'
 import { Route as HomeAboutUsIndexRouteImport } from './routes/_home/about-us/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
+import { Route as UserOrdersOrderIdRouteImport } from './routes/user/orders/$orderId'
 
+const UserRouteRoute = UserRouteRouteImport.update({
+  id: '/user',
+  path: '/user',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/_home',
   getParentRoute: () => rootRouteImport,
@@ -24,6 +34,21 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const UserIndexRoute = UserIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UserRouteRoute,
+} as any)
+const UserOrdersIndexRoute = UserOrdersIndexRouteImport.update({
+  id: '/orders/',
+  path: '/orders/',
+  getParentRoute: () => UserRouteRoute,
+} as any)
+const UserDashboardIndexRoute = UserDashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => UserRouteRoute,
 } as any)
 const HomeSearchIndexRoute = HomeSearchIndexRouteImport.update({
   id: '/search/',
@@ -45,53 +70,104 @@ const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UserOrdersOrderIdRoute = UserOrdersOrderIdRouteImport.update({
+  id: '/orders/$orderId',
+  path: '/orders/$orderId',
+  getParentRoute: () => UserRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/user': typeof UserRouteRouteWithChildren
+  '/user/': typeof UserIndexRoute
+  '/user/orders/$orderId': typeof UserOrdersOrderIdRoute
   '/login/': typeof AuthLoginIndexRoute
   '/about-us/': typeof HomeAboutUsIndexRoute
   '/contact-us/': typeof HomeContactUsIndexRoute
   '/search/': typeof HomeSearchIndexRoute
+  '/user/dashboard/': typeof UserDashboardIndexRoute
+  '/user/orders/': typeof UserOrdersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/user': typeof UserIndexRoute
+  '/user/orders/$orderId': typeof UserOrdersOrderIdRoute
   '/login': typeof AuthLoginIndexRoute
   '/about-us': typeof HomeAboutUsIndexRoute
   '/contact-us': typeof HomeContactUsIndexRoute
   '/search': typeof HomeSearchIndexRoute
+  '/user/dashboard': typeof UserDashboardIndexRoute
+  '/user/orders': typeof UserOrdersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteRouteWithChildren
+  '/user': typeof UserRouteRouteWithChildren
+  '/user/': typeof UserIndexRoute
+  '/user/orders/$orderId': typeof UserOrdersOrderIdRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
   '/_home/about-us/': typeof HomeAboutUsIndexRoute
   '/_home/contact-us/': typeof HomeContactUsIndexRoute
   '/_home/search/': typeof HomeSearchIndexRoute
+  '/user/dashboard/': typeof UserDashboardIndexRoute
+  '/user/orders/': typeof UserOrdersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login/' | '/about-us/' | '/contact-us/' | '/search/'
+  fullPaths:
+    | '/'
+    | '/user'
+    | '/user/'
+    | '/user/orders/$orderId'
+    | '/login/'
+    | '/about-us/'
+    | '/contact-us/'
+    | '/search/'
+    | '/user/dashboard/'
+    | '/user/orders/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/about-us' | '/contact-us' | '/search'
+  to:
+    | '/'
+    | '/user'
+    | '/user/orders/$orderId'
+    | '/login'
+    | '/about-us'
+    | '/contact-us'
+    | '/search'
+    | '/user/dashboard'
+    | '/user/orders'
   id:
     | '__root__'
     | '/'
     | '/_home'
+    | '/user'
+    | '/user/'
+    | '/user/orders/$orderId'
     | '/_auth/login/'
     | '/_home/about-us/'
     | '/_home/contact-us/'
     | '/_home/search/'
+    | '/user/dashboard/'
+    | '/user/orders/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
+  UserRouteRoute: typeof UserRouteRouteWithChildren
   AuthLoginIndexRoute: typeof AuthLoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/user': {
+      id: '/user'
+      path: '/user'
+      fullPath: '/user'
+      preLoaderRoute: typeof UserRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_home': {
       id: '/_home'
       path: ''
@@ -105,6 +181,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/user/': {
+      id: '/user/'
+      path: '/'
+      fullPath: '/user/'
+      preLoaderRoute: typeof UserIndexRouteImport
+      parentRoute: typeof UserRouteRoute
+    }
+    '/user/orders/': {
+      id: '/user/orders/'
+      path: '/orders'
+      fullPath: '/user/orders/'
+      preLoaderRoute: typeof UserOrdersIndexRouteImport
+      parentRoute: typeof UserRouteRoute
+    }
+    '/user/dashboard/': {
+      id: '/user/dashboard/'
+      path: '/dashboard'
+      fullPath: '/user/dashboard/'
+      preLoaderRoute: typeof UserDashboardIndexRouteImport
+      parentRoute: typeof UserRouteRoute
     }
     '/_home/search/': {
       id: '/_home/search/'
@@ -134,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/user/orders/$orderId': {
+      id: '/user/orders/$orderId'
+      path: '/orders/$orderId'
+      fullPath: '/user/orders/$orderId'
+      preLoaderRoute: typeof UserOrdersOrderIdRouteImport
+      parentRoute: typeof UserRouteRoute
+    }
   }
 }
 
@@ -153,9 +257,28 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
   HomeRouteRouteChildren,
 )
 
+interface UserRouteRouteChildren {
+  UserIndexRoute: typeof UserIndexRoute
+  UserOrdersOrderIdRoute: typeof UserOrdersOrderIdRoute
+  UserDashboardIndexRoute: typeof UserDashboardIndexRoute
+  UserOrdersIndexRoute: typeof UserOrdersIndexRoute
+}
+
+const UserRouteRouteChildren: UserRouteRouteChildren = {
+  UserIndexRoute: UserIndexRoute,
+  UserOrdersOrderIdRoute: UserOrdersOrderIdRoute,
+  UserDashboardIndexRoute: UserDashboardIndexRoute,
+  UserOrdersIndexRoute: UserOrdersIndexRoute,
+}
+
+const UserRouteRouteWithChildren = UserRouteRoute._addFileChildren(
+  UserRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRouteRoute: HomeRouteRouteWithChildren,
+  UserRouteRoute: UserRouteRouteWithChildren,
   AuthLoginIndexRoute: AuthLoginIndexRoute,
 }
 export const routeTree = rootRouteImport
