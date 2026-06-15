@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomeSearchIndexRouteImport } from './routes/_home/search/index'
 import { Route as HomeContactUsIndexRouteImport } from './routes/_home/contact-us/index'
 import { Route as HomeAboutUsIndexRouteImport } from './routes/_home/about-us/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const HomeSearchIndexRoute = HomeSearchIndexRouteImport.update({
+  id: '/search/',
+  path: '/search/',
+  getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeContactUsIndexRoute = HomeContactUsIndexRouteImport.update({
   id: '/contact-us/',
@@ -45,12 +51,14 @@ export interface FileRoutesByFullPath {
   '/login/': typeof AuthLoginIndexRoute
   '/about-us/': typeof HomeAboutUsIndexRoute
   '/contact-us/': typeof HomeContactUsIndexRoute
+  '/search/': typeof HomeSearchIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof AuthLoginIndexRoute
   '/about-us': typeof HomeAboutUsIndexRoute
   '/contact-us': typeof HomeContactUsIndexRoute
+  '/search': typeof HomeSearchIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,12 +67,13 @@ export interface FileRoutesById {
   '/_auth/login/': typeof AuthLoginIndexRoute
   '/_home/about-us/': typeof HomeAboutUsIndexRoute
   '/_home/contact-us/': typeof HomeContactUsIndexRoute
+  '/_home/search/': typeof HomeSearchIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login/' | '/about-us/' | '/contact-us/'
+  fullPaths: '/' | '/login/' | '/about-us/' | '/contact-us/' | '/search/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/about-us' | '/contact-us'
+  to: '/' | '/login' | '/about-us' | '/contact-us' | '/search'
   id:
     | '__root__'
     | '/'
@@ -72,6 +81,7 @@ export interface FileRouteTypes {
     | '/_auth/login/'
     | '/_home/about-us/'
     | '/_home/contact-us/'
+    | '/_home/search/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +105,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_home/search/': {
+      id: '/_home/search/'
+      path: '/search'
+      fullPath: '/search/'
+      preLoaderRoute: typeof HomeSearchIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
     }
     '/_home/contact-us/': {
       id: '/_home/contact-us/'
@@ -123,11 +140,13 @@ declare module '@tanstack/react-router' {
 interface HomeRouteRouteChildren {
   HomeAboutUsIndexRoute: typeof HomeAboutUsIndexRoute
   HomeContactUsIndexRoute: typeof HomeContactUsIndexRoute
+  HomeSearchIndexRoute: typeof HomeSearchIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeAboutUsIndexRoute: HomeAboutUsIndexRoute,
   HomeContactUsIndexRoute: HomeContactUsIndexRoute,
+  HomeSearchIndexRoute: HomeSearchIndexRoute,
 }
 
 const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
