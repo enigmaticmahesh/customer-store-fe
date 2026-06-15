@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import useSearchState from "../-stores/useSearch.store"
 import ProductsToolbar from "./products-toolbar.component"
+import ProductCard from "./product-card.component"
 
 const FilteredProducts = () => {
     const sortedProducts = useSearchState(state => state.sortedProducts)
@@ -36,6 +37,13 @@ const FilteredProducts = () => {
         }
 
         const listClass = `grid gap-3 lg:gap-4 ${viewMode === "grid" ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`
+        const productsList = sortedProducts.map(product => (
+            <ProductCard
+                key={product._id}
+                product={product}
+                // attributes={attributes}
+            />
+        ))
         return (
             <>
                 <div className={listClass}>
@@ -46,6 +54,7 @@ const FilteredProducts = () => {
                             attributes={attributes}
                         />
                     ))} */}
+                    {productsList}
                 </div>
 
                 {/* {sortedProducts?.length > visibleProduct && (
