@@ -1,6 +1,6 @@
 import { getInitials } from "@/app-utils/string-utils"
 import { Link, useLocation } from "@tanstack/react-router";
-import { Bell, CircleUserRound, ClipboardList, FileUser, Grid2x2, KeyRound, LogOut, Star } from "lucide-react";
+import { ClipboardList, FileUser, Grid2x2, KeyRound, LogOut } from "lucide-react";
 
   const userSidebar = [
     {
@@ -16,21 +16,21 @@ import { Bell, CircleUserRound, ClipboardList, FileUser, Grid2x2, KeyRound, LogO
         href: "/user/orders",
         icon: ClipboardList,
     },
-    {
-        title: "Notifications",
-        href: "/user/notifications",
-        icon: Bell,
-    },
-    {
-        title: "My Reviews",
-        href: "/user/my-reviews",
-        icon: Star,
-    },
-    {
-        title: "My Account",
-        href: "/user/my-account",
-        icon: CircleUserRound,
-    },
+    // {
+    //     title: "Notifications",
+    //     href: "/user/notifications",
+    //     icon: Bell,
+    // },
+    // {
+    //     title: "My Reviews",
+    //     href: "/user/my-reviews",
+    //     icon: Star,
+    // },
+    // {
+    //     title: "My Account",
+    //     href: "/user/my-account",
+    //     icon: CircleUserRound,
+    // },
     {
         // title: showingTranslateValue(dashboard?.update_profile),
         title: 'Update Profile',

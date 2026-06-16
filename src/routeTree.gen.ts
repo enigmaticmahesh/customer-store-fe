@@ -15,8 +15,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as UserIndexRouteImport } from './routes/user/index'
 import { Route as OrdersIndexRouteImport } from './routes/orders/index'
 import { Route as OrdersOrderIdRouteImport } from './routes/orders/$orderId'
+import { Route as UserUpdateProfileIndexRouteImport } from './routes/user/update-profile/index'
 import { Route as UserOrdersIndexRouteImport } from './routes/user/orders/index'
 import { Route as UserDashboardIndexRouteImport } from './routes/user/dashboard/index'
+import { Route as UserChangePasswordIndexRouteImport } from './routes/user/change-password/index'
 import { Route as HomeSearchIndexRouteImport } from './routes/_home/search/index'
 import { Route as HomeContactUsIndexRouteImport } from './routes/_home/contact-us/index'
 import { Route as HomeAboutUsIndexRouteImport } from './routes/_home/about-us/index'
@@ -51,6 +53,11 @@ const OrdersOrderIdRoute = OrdersOrderIdRouteImport.update({
   path: '/orders/$orderId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UserUpdateProfileIndexRoute = UserUpdateProfileIndexRouteImport.update({
+  id: '/update-profile/',
+  path: '/update-profile/',
+  getParentRoute: () => UserRouteRoute,
+} as any)
 const UserOrdersIndexRoute = UserOrdersIndexRouteImport.update({
   id: '/orders/',
   path: '/orders/',
@@ -59,6 +66,11 @@ const UserOrdersIndexRoute = UserOrdersIndexRouteImport.update({
 const UserDashboardIndexRoute = UserDashboardIndexRouteImport.update({
   id: '/dashboard/',
   path: '/dashboard/',
+  getParentRoute: () => UserRouteRoute,
+} as any)
+const UserChangePasswordIndexRoute = UserChangePasswordIndexRouteImport.update({
+  id: '/change-password/',
+  path: '/change-password/',
   getParentRoute: () => UserRouteRoute,
 } as any)
 const HomeSearchIndexRoute = HomeSearchIndexRouteImport.update({
@@ -92,8 +104,10 @@ export interface FileRoutesByFullPath {
   '/about-us/': typeof HomeAboutUsIndexRoute
   '/contact-us/': typeof HomeContactUsIndexRoute
   '/search/': typeof HomeSearchIndexRoute
+  '/user/change-password/': typeof UserChangePasswordIndexRoute
   '/user/dashboard/': typeof UserDashboardIndexRoute
   '/user/orders/': typeof UserOrdersIndexRoute
+  '/user/update-profile/': typeof UserUpdateProfileIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -104,8 +118,10 @@ export interface FileRoutesByTo {
   '/about-us': typeof HomeAboutUsIndexRoute
   '/contact-us': typeof HomeContactUsIndexRoute
   '/search': typeof HomeSearchIndexRoute
+  '/user/change-password': typeof UserChangePasswordIndexRoute
   '/user/dashboard': typeof UserDashboardIndexRoute
   '/user/orders': typeof UserOrdersIndexRoute
+  '/user/update-profile': typeof UserUpdateProfileIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -119,8 +135,10 @@ export interface FileRoutesById {
   '/_home/about-us/': typeof HomeAboutUsIndexRoute
   '/_home/contact-us/': typeof HomeContactUsIndexRoute
   '/_home/search/': typeof HomeSearchIndexRoute
+  '/user/change-password/': typeof UserChangePasswordIndexRoute
   '/user/dashboard/': typeof UserDashboardIndexRoute
   '/user/orders/': typeof UserOrdersIndexRoute
+  '/user/update-profile/': typeof UserUpdateProfileIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -134,8 +152,10 @@ export interface FileRouteTypes {
     | '/about-us/'
     | '/contact-us/'
     | '/search/'
+    | '/user/change-password/'
     | '/user/dashboard/'
     | '/user/orders/'
+    | '/user/update-profile/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -146,8 +166,10 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/contact-us'
     | '/search'
+    | '/user/change-password'
     | '/user/dashboard'
     | '/user/orders'
+    | '/user/update-profile'
   id:
     | '__root__'
     | '/'
@@ -160,8 +182,10 @@ export interface FileRouteTypes {
     | '/_home/about-us/'
     | '/_home/contact-us/'
     | '/_home/search/'
+    | '/user/change-password/'
     | '/user/dashboard/'
     | '/user/orders/'
+    | '/user/update-profile/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -217,6 +241,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrdersOrderIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/user/update-profile/': {
+      id: '/user/update-profile/'
+      path: '/update-profile'
+      fullPath: '/user/update-profile/'
+      preLoaderRoute: typeof UserUpdateProfileIndexRouteImport
+      parentRoute: typeof UserRouteRoute
+    }
     '/user/orders/': {
       id: '/user/orders/'
       path: '/orders'
@@ -229,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/user/dashboard/'
       preLoaderRoute: typeof UserDashboardIndexRouteImport
+      parentRoute: typeof UserRouteRoute
+    }
+    '/user/change-password/': {
+      id: '/user/change-password/'
+      path: '/change-password'
+      fullPath: '/user/change-password/'
+      preLoaderRoute: typeof UserChangePasswordIndexRouteImport
       parentRoute: typeof UserRouteRoute
     }
     '/_home/search/': {
@@ -280,14 +318,18 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 
 interface UserRouteRouteChildren {
   UserIndexRoute: typeof UserIndexRoute
+  UserChangePasswordIndexRoute: typeof UserChangePasswordIndexRoute
   UserDashboardIndexRoute: typeof UserDashboardIndexRoute
   UserOrdersIndexRoute: typeof UserOrdersIndexRoute
+  UserUpdateProfileIndexRoute: typeof UserUpdateProfileIndexRoute
 }
 
 const UserRouteRouteChildren: UserRouteRouteChildren = {
   UserIndexRoute: UserIndexRoute,
+  UserChangePasswordIndexRoute: UserChangePasswordIndexRoute,
   UserDashboardIndexRoute: UserDashboardIndexRoute,
   UserOrdersIndexRoute: UserOrdersIndexRoute,
+  UserUpdateProfileIndexRoute: UserUpdateProfileIndexRoute,
 }
 
 const UserRouteRouteWithChildren = UserRouteRoute._addFileChildren(
