@@ -28,7 +28,7 @@ const RecentOrders = () => {
                 const link = true
                 if (link) {
                     return (
-                        <Link to="/user/orders/$orderId" params={{orderId: order._id}} viewTransition>
+                        <Link to="/orders/$orderId" params={{orderId: order._id}} viewTransition>
                         {/* // <Link to="/" viewTransition> */}
                             <span className="text-primary text-end cursor-pointer hover:text-primary transition-all p-3 font-semibold rounded-full flex items-center justify-end gap-1.5">
                                 <Eye className="h-4 w-4" />

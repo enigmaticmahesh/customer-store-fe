@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router'
-import { orderDetails as data, globalSetting } from '../-temp.data'
 import { getReadableDate } from '@/app-utils/date-utils'
 import { formatPriceString } from '@/app-utils/string-utils'
-import InvoiceOrderTableBody from './invoice-order-table.component'
 import darkLogo from '@/assets/logo/logo-dark.svg'
+import { orderDetails as data, globalSetting } from '../-temp.data'
+import InvoiceOrderTableBody from './invoice-order-table.component'
 
 const OrderInvoice = () => {
     return (
