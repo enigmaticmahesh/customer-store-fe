@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import ImageWithFallback from "./image-with-fallback.component";
+import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import type { SortedProd } from "../-temp-data";
 import { Expand } from "lucide-react";
 import AddToCartBtn from "./add-to-cart-btn.component";
