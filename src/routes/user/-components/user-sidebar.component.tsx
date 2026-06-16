@@ -97,6 +97,7 @@ const UserSidebar = () => {
                     to={item.href}
                     key={item.title}
                     className={linkClass()}
+                    viewTransition
                 >
                     <item.icon
                         className={iconClass()}
