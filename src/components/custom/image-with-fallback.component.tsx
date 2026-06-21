@@ -1,7 +1,7 @@
 import { useState, type ComponentPropsWithoutRef } from "react"
 
 type ImgFallbackProps = {
-    src: string
+    src: string|undefined
     fallback?: string
 }
 

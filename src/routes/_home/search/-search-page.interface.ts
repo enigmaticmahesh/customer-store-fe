@@ -14,7 +14,9 @@ export type SearchStoreState = {
     priceRange: { min: number, max: number }
     sortedProducts: SortedProd[],
     viewMode: 'grid'|'list'
-    sortBy: string
+    sortBy: string,
+    quickView: boolean,
+    quickViewProd: SortedProd|null,
 }
 
 export type SearchStore = SearchStoreState & {

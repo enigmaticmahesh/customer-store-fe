@@ -2,7 +2,7 @@ import { formatPriceString } from "@/app-utils/string-utils"
 import CouponCodeInput from "./coupon-code-input.component"
 import { ShoppingBag } from "lucide-react"
 import CartItem from "@/components/custom/cart/cart-item"
-import { items } from "../temp.data"
+import { items } from "../-temp.data"
 
 const CheckoutCartSection = () => {
 

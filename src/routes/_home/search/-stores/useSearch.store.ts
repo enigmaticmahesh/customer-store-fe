@@ -14,7 +14,9 @@ const InitialState: SearchStoreState = {
     priceRange: { min: 0, max: 1000 },
     sortedProducts: sortedProducts,
     viewMode: 'grid',
-    sortBy: 'default'
+    sortBy: 'default',
+    quickView: false,
+    quickViewProd: null
 }
 
 const useSearchState = create<SearchStore>((set) => ({

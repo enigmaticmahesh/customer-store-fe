@@ -5,8 +5,14 @@ import { Expand } from "lucide-react";
 import AddToCartBtn from "./add-to-cart-btn.component";
 import Rating from "./product-rating.component";
 import Price from "./product-price.component";
+import useSearchState from "../-stores/useSearch.store";
 
 const ProductCard = ({product}: {product: SortedProd}) => {
+    const updateStore = useSearchState(state => state.updateStore)
+
+    const openQuickView = () => {
+        updateStore({quickView: true, quickViewProd: product})
+    }
     
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-xl border bg-card transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 ">
@@ -38,6 +44,7 @@ const ProductCard = ({product}: {product: SortedProd}) => {
                         //         )} product modal`,
                         //     );
                         // }}
+                        onClick={openQuickView}
                         className="relative h-auto inline-flex items-center cursor-pointer justify-center rounded-full transition-colors text-xs py-2 px-4 bg-background text-muted-foreground dark:bg-background dark:text-muted-foreground hover:text-primary hover:bg-muted dark:hover:bg-accent shadow-lg focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-primary dark:focus:ring-offset-0"
                     >
                         <Expand className="size-3" />

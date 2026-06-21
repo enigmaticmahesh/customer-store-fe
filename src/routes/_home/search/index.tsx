@@ -3,6 +3,7 @@ import { ChevronRight, Home } from 'lucide-react'
 import CategoriesPills from './-components/categories-pills.component'
 import FilterSidebar from './-components/filter-sidebar.component'
 import FilteredProducts from './-components/filtered-products.component'
+import QuickViewModal from './-components/quick-view-modal.component'
 
 const PageHeader = () => {
     return (
@@ -52,6 +53,15 @@ const SearchProducts = () => {
     )
 }
 
+const SearchProductsPage = () => {
+    return (
+        <>
+            <QuickViewModal />
+            <SearchProducts />
+        </>
+    )
+}
+
 export const Route = createFileRoute('/_home/search/')({
-  component: SearchProducts,
+  component: SearchProductsPage,
 })
