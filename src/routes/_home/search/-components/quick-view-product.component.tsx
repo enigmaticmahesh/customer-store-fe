@@ -7,8 +7,8 @@ import {
 import useSearchState from "../-stores/useSearch.store"
 import ImageWithFallback from "@/components/custom/image-with-fallback.component"
 import ProductStock from "@/components/custom/product-stock.component"
-import Rating from "./product-rating.component"
-import Price from "./product-price.component"
+import Rating from "../../../../components/custom/product-rating.component"
+import Price from "../../../../components/custom/product-price.component"
 import { Eye, Minus, Plus, ShoppingBag } from "lucide-react"
 
 const QuickViewProduct = () => {
@@ -75,7 +75,14 @@ const QuickViewProduct = () => {
                                                 {showingTranslateValue(product?.title)}
                                             </h2>
                                             </Link> */}
-                                            <h2 className="text-foreground text-lg md:text-xl lg:text-xl font-medium hover:text-primary cursor-pointer">{product?.title?.en}</h2>
+                                            <Link
+                                                to="/product/$productId"
+                                                params={{productId: product._id}}
+                                            >
+                                                <h2 className="text-foreground text-lg md:text-xl lg:text-xl font-medium hover:text-primary cursor-pointer">
+                                                    {product.title.en}
+                                                </h2>
+                                            </Link>
                                             <div className="flex gap-0.5 items-center mt-1">
                                             {/* Rating */}
                                             <Rating
@@ -160,7 +167,8 @@ const QuickViewProduct = () => {
                                                 Add to cart
                                             </button>
                                             <Link
-                                                to="/"
+                                                to="/product/$productId"
+                                                params={{productId: product._id}}
                                                 // href={`/product/${product.slug}`}
                                                 // passHref
                                                 className="w-full relative h-auto flex items-center font-semibold text-sm text-foreground justify-center rounded-md transition-colors py-2 px-4 border border-border bg-card hover:bg-accent hover:text-primary"

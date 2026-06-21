@@ -3,8 +3,8 @@ import ImageWithFallback from "@/components/custom/image-with-fallback.component
 import type { SortedProd } from "../-temp-data";
 import { Expand } from "lucide-react";
 import AddToCartBtn from "./add-to-cart-btn.component";
-import Rating from "./product-rating.component";
-import Price from "./product-price.component";
+import Rating from "../../../../components/custom/product-rating.component";
+import Price from "../../../../components/custom/product-price.component";
 import useSearchState from "../-stores/useSearch.store";
 
 const ProductCard = ({product}: {product: SortedProd}) => {

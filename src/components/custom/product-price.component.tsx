@@ -3,12 +3,12 @@ import { formatPriceString } from "@/app-utils/string-utils";
 type PriceProps = {
     // product: SortedProd,
     price: string,
-    card: boolean,
+    card?: boolean,
     // originalPrice: string
     // campaign: null
 }
 
-const Price = ({ price, card }: PriceProps) => {
+const Price = ({ price, card = false }: PriceProps) => {
 //   const { formatPrice } = useUtilsFunction();
 
   // When campaign data is present, always use the passed price/originalPrice directly
