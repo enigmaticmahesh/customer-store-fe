@@ -272,6 +272,6 @@ const ChangePasswordPage = () => {
     )
 }
 
-export const Route = createFileRoute('/user/change-password/')({
+export const Route = createFileRoute('/_home/user/change-password/')({
   component: ChangePasswordPage,
 })

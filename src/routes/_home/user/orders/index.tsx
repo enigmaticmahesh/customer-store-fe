@@ -9,6 +9,6 @@ const UserOrders = () => {
     )
 }
 
-export const Route = createFileRoute('/user/orders/')({
+export const Route = createFileRoute('/_home/user/orders/')({
   component: UserOrders,
 })

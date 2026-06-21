@@ -239,6 +239,6 @@ const UpdateProfilePage = () => {
     )
 }
 
-export const Route = createFileRoute('/user/update-profile/')({
+export const Route = createFileRoute('/_home/user/update-profile/')({
   component: UpdateProfilePage,
 })

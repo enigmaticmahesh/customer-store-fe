@@ -16,6 +16,6 @@ const UserLayout = () => {
     )
 }
 
-export const Route = createFileRoute('/user')({
+export const Route = createFileRoute('/_home/user')({
   component: UserLayout,
 })

@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 
 const CouponCodeInput = () => {
-    const [couponCode] = useState('')
+    // const [couponCode] = useState('')
     const [isApplied] = useState(false)
 
     const couponUi = () => {
@@ -25,7 +25,7 @@ const CouponCodeInput = () => {
                     type="text"
                     placeholder="Coupon Code"
                     className="px-4 py-2 h-10 mr-1 border border-border rounded-md focus:outline-none"
-                    value={couponCode}
+                    // value={couponCode}
                     // className="form-input py-2 px-3 md:px-4 w-full appearance-none transition ease-in-out border text-input text-sm rounded-md h-12 duration-200 bg-background border-border focus:ring-0 focus:outline-none focus:border-primary placeholder-muted-foreground placeholder-opacity-75"
                 />
                 <Button

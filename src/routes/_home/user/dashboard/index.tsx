@@ -65,6 +65,6 @@ const UserDashboard = () => {
     )
 }
 
-export const Route = createFileRoute('/user/dashboard/')({
+export const Route = createFileRoute('/_home/user/dashboard/')({
   component: UserDashboard,
 })
