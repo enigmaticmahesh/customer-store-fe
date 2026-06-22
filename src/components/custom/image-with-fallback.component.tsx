@@ -15,7 +15,7 @@ const ImageWithFallback = ({src, fallback = fallbackUrl, className = "", ...prop
 
     const handleErr = () => setImgErr(true)
 
-    if (imgErr) return <img {...props} src={fallback} alt="product" className={imgClass} />
+    if (imgErr) return <img {...props} src={fallback} className={imgClass} />
     return <img {...props} src={src} alt="product" onError={handleErr} className={imgClass} />
 }
 
