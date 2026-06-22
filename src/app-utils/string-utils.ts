@@ -16,3 +16,13 @@ export function getInitials(fullName: string = 'Unknown') {
         return `${names.at(0)!.at(0)}${names.at(-1)!.at(0)}`
     }
 }
+
+export const isValidImageUrl = (url: string) => {
+  if (!url || typeof url !== "string") return false;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+};
