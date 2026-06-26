@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/_home/route'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomeIndexRouteImport } from './routes/_home/index'
 import { Route as HomeUserRouteRouteImport } from './routes/_home/user/route'
 import { Route as HomeUserIndexRouteImport } from './routes/_home/user/index'
 import { Route as HomeSearchIndexRouteImport } from './routes/_home/search/index'
@@ -31,10 +31,10 @@ const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/_home',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeUserRouteRoute = HomeUserRouteRouteImport.update({
   id: '/user',
@@ -115,7 +115,7 @@ const HomeUserChangePasswordIndexRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof HomeIndexRoute
   '/user': typeof HomeUserRouteRouteWithChildren
   '/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/product/$productId': typeof HomeProductProductIdRoute
@@ -133,7 +133,7 @@ export interface FileRoutesByFullPath {
   '/user/update-profile/': typeof HomeUserUpdateProfileIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  '/': typeof HomeIndexRoute
   '/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/product/$productId': typeof HomeProductProductIdRoute
   '/login': typeof AuthLoginIndexRoute
@@ -151,9 +151,9 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/_home': typeof HomeRouteRouteWithChildren
   '/_home/user': typeof HomeUserRouteRouteWithChildren
+  '/_home/': typeof HomeIndexRoute
   '/_home/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/_home/product/$productId': typeof HomeProductProductIdRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
@@ -207,9 +207,9 @@ export interface FileRouteTypes {
     | '/user/update-profile'
   id:
     | '__root__'
-    | '/'
     | '/_home'
     | '/_home/user'
+    | '/_home/'
     | '/_home/orders/$orderId'
     | '/_home/product/$productId'
     | '/_auth/login/'
@@ -227,7 +227,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
   AuthLoginIndexRoute: typeof AuthLoginIndexRoute
 }
@@ -241,12 +240,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_home/': {
+      id: '/_home/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof HomeIndexRouteImport
+      parentRoute: typeof HomeRouteRoute
     }
     '/_home/user': {
       id: '/_home/user'
@@ -378,6 +377,7 @@ const HomeUserRouteRouteWithChildren = HomeUserRouteRoute._addFileChildren(
 
 interface HomeRouteRouteChildren {
   HomeUserRouteRoute: typeof HomeUserRouteRouteWithChildren
+  HomeIndexRoute: typeof HomeIndexRoute
   HomeOrdersOrderIdRoute: typeof HomeOrdersOrderIdRoute
   HomeProductProductIdRoute: typeof HomeProductProductIdRoute
   HomeAboutUsIndexRoute: typeof HomeAboutUsIndexRoute
@@ -390,6 +390,7 @@ interface HomeRouteRouteChildren {
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeUserRouteRoute: HomeUserRouteRouteWithChildren,
+  HomeIndexRoute: HomeIndexRoute,
   HomeOrdersOrderIdRoute: HomeOrdersOrderIdRoute,
   HomeProductProductIdRoute: HomeProductProductIdRoute,
   HomeAboutUsIndexRoute: HomeAboutUsIndexRoute,
@@ -405,7 +406,6 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   HomeRouteRoute: HomeRouteRouteWithChildren,
   AuthLoginIndexRoute: AuthLoginIndexRoute,
 }
