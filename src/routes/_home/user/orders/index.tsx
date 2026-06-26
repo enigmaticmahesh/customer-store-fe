@@ -1,14 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
-import RecentOrders from './-components/recent-orders.component'
+import { createFileRoute } from "@tanstack/react-router";
+import UserOrders from "./-user-orders.page";
 
-const UserOrders = () => {
-    return (
-        <div className="overflow-hidden">
-            <RecentOrders />
-        </div>
-    )
-}
-
-export const Route = createFileRoute('/_home/user/orders/')({
+export const Route = createFileRoute("/_home/user/orders/")({
   component: UserOrders,
-})
+});
