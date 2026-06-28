@@ -1,4 +1,4 @@
-import type { ProdListSkeletonStateType } from "@/schemas/app-global-stores.schema";
+import type { ProdListSkeletonStateType } from "@/interfaces/common-prod-list.interface";
 import type { SortedProd, TopCat } from "./-temp-data";
 
 export type FilterSections = {

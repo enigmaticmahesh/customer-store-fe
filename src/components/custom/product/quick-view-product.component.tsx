@@ -11,8 +11,8 @@ import Rating from "@/components/custom/product-rating.component";
 import Price from "@/components/custom/product-price.component";
 import { Eye, Minus, Plus, ShoppingBag } from "lucide-react";
 import { useStore, type StoreApi } from "zustand";
-import type { AtLeastOne } from "@/schemas/app-general.schema";
-import type { BaseProdStoreContract } from "@/schemas/app-global-stores.schema";
+import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
+import type { AtLeastOne } from "@/interfaces/app-global.interface";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
   quickViewProd: any | null;

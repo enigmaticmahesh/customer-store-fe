@@ -6,7 +6,7 @@ import type {
 } from "../-search-page.interface";
 import { sortedProducts, topCategories, type SortedProd } from "../-temp-data";
 import createProdListStore from "@/stores/products-list-store-skeleton";
-import type { ProdListSkeletonStateType } from "@/schemas/app-global-stores.schema";
+import type { ProdListSkeletonStateType } from "@/interfaces/common-prod-list.interface";
 
 const InitialState: SearchState = {
   showFilters: false,

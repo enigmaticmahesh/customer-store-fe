@@ -267,3 +267,5 @@ export const popularProducts = [
     },
   },
 ];
+
+export type PopularProd = (typeof popularProducts)[number];

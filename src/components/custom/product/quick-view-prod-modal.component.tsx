@@ -1,8 +1,8 @@
 import { useStore, type StoreApi } from "zustand";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import QuickViewProduct from "./quick-view-product.component";
-import type { AtLeastOne } from "@/schemas/app-general.schema";
-import type { BaseProdStoreContract } from "@/schemas/app-global-stores.schema";
+import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
+import type { AtLeastOne } from "@/interfaces/app-global.interface";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
   quickView: boolean;
@@ -21,8 +21,8 @@ const QuickViewModal = ({ store }: ProductQuickViewModalProps) => {
   );
 
   const handleOpen = (state: boolean) => {
-    if (!updateStore) return;
-    updateStore({ quickView: state });
+    // Adding "!" so that "updateStore" will be available for sure as we have applied "AtleastOne"
+    updateStore!({ quickView: state });
     // if (!state) {
     //     resetStore() // Reset store when dialog closes
     // }
