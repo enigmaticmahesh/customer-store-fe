@@ -18,9 +18,9 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
-    // rules: {
-    //   // Turns off the rule completely
-    //   "@typescript-eslint/no-explicit-any": "warn",
-    // },
+    rules: {
+      // Turns off the rule completely
+      "@typescript-eslint/no-explicit-any": "warn",
+    },
   },
 ]);

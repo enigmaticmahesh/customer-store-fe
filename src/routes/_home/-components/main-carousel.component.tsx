@@ -8,7 +8,6 @@ import ImageWithFallback from "@/components/custom/image-with-fallback.component
 import { Link } from "@tanstack/react-router";
 
 const slider = storeCustomizationSetting?.slider;
-console.log({ slider });
 
 const MainCarousel = () => {
   // const cookieStore = await cookies();
