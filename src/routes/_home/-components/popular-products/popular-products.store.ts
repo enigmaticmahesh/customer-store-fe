@@ -1,7 +1,7 @@
 import type {
   ProdListSkeletonStateType,
   ProdListStoreType,
-} from "@/schemas/app-global-stores.schema";
+} from "@/interfaces/common-prod-list.interface";
 import createProdListStore from "@/stores/products-list-store-skeleton";
 import { create } from "zustand";
 import { popularProducts } from "./temp.data";

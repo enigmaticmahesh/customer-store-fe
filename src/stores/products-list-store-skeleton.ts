@@ -1,7 +1,7 @@
 import type {
   ProdListSkeletonStateType,
   ProdListStoreType,
-} from "@/schemas/app-global-stores.schema";
+} from "@/interfaces/common-prod-list.interface";
 import type { StateCreator } from "zustand";
 
 const InitialState: ProdListSkeletonStateType<any> = {

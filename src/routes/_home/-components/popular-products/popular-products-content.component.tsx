@@ -1,6 +1,7 @@
 import ProductCard from "@/components/custom/product/product-card.component";
 import { storeCustomizationSetting } from "../temp-data";
 import usePopularProductsStore from "./popular-products.store";
+import type { PopularProd } from "./temp.data";
 
 const PopularProductsContent = () => {
   const popularProducts = usePopularProductsStore((state) => state.products);
@@ -8,7 +9,7 @@ const PopularProductsContent = () => {
 
   const prodsListUi = popularProducts
     ?.slice(0, storeCustomizationSetting?.home?.latest_discount_product_limit)
-    .map((product) => (
+    .map((product: PopularProd) => (
       <ProductCard
         key={product._id}
         product={product}

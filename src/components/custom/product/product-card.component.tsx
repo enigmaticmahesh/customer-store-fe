@@ -5,8 +5,8 @@ import Rating from "../product-rating.component";
 import Price from "../product-price.component";
 import AddToCartBtn from "../cart/add-to-cart-btn.component";
 import { useStore, type StoreApi } from "zustand";
-import type { AtLeastOne } from "@/schemas/app-general.schema";
-import type { BaseProdStoreContract } from "@/schemas/app-global-stores.schema";
+import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
+import type { AtLeastOne } from "@/interfaces/app-global.interface";
 
 type ProductCardProps = {
   product: any;
@@ -22,8 +22,8 @@ const ProductCard = ({ product, store }: ProductCardProps) => {
   );
 
   const openQuickView = () => {
-    if (!updateStore) return;
-    updateStore({ quickView: true, quickViewProd: product });
+    // Adding "!" so that "updateStore" will be available for sure as we have applied "AtleastOne"
+    updateStore!({ quickView: true, quickViewProd: product });
   };
 
   return (
