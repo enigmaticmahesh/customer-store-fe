@@ -7,14 +7,21 @@ import AddToCartBtn from "../cart/add-to-cart-btn.component";
 import { useStore, type StoreApi } from "zustand";
 import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
 import type { AtLeastOne } from "@/interfaces/app-global.interface";
+import DiscountBadge from "../discount-badge.component";
+import DiscountedPrice from "../discounted-price.component";
 
 type ProductCardProps = {
   product: any;
+  showDiscount?: boolean;
   // openQuickView: () => void;
   store: StoreApi<AtLeastOne<BaseProdStoreContract>>;
 };
 
-const ProductCard = ({ product, store }: ProductCardProps) => {
+const ProductCard = ({
+  product,
+  store,
+  showDiscount = false,
+}: ProductCardProps) => {
   // const updateStore = useSearchState((state) => state.updateStore);
   const updateStore = useStore(
     store,
@@ -26,11 +33,42 @@ const ProductCard = ({ product, store }: ProductCardProps) => {
     updateStore!({ quickView: true, quickViewProd: product });
   };
 
+  const discountBadgeUi = showDiscount && (
+    <div className="w-full flex justify-between">
+      <DiscountBadge
+        price={product.prices.price}
+        originalPrice={product.prices.originalPrice}
+      />
+    </div>
+  );
+
+  const discountedPriceUi = () => {
+    if (showDiscount) {
+      return (
+        <DiscountedPrice
+          card
+          product={product}
+          price={product.prices.price}
+          originalPrice={product.prices.originalPrice}
+        />
+      );
+    }
+
+    return (
+      <Price
+        card
+        // product={product}
+        price={product?.prices?.price}
+        originalPrice={product?.prices?.originalPrice}
+        // campaign={isInCampaign ? campaign : null}
+      />
+    );
+  };
+
+  const prodInfoClass = `flex flex-1 flex-col space-y-2 px-4 pt-2 ${showDiscount ? "pb-8" : "pb-4"}`;
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border bg-card transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 ">
-      {/* <div className="w-full flex justify-between">
-                <Discount product={product} />
-            </div> */}
+      {discountBadgeUi}
       <div className="relative w-full min-h-48 lg:h-48 xl:h-52">
         <Link
           // href={`/product/${product?.slug}`}
@@ -70,7 +108,7 @@ const ProductCard = ({ product, store }: ProductCardProps) => {
       </div>
 
       {/* product info start */}
-      <div className="flex flex-1 flex-col space-y-2 px-4 pt-2 pb-4">
+      <div className={prodInfoClass}>
         <div className="relative mb-1">
           <Link
             // href={`/product/${product?.slug}`}
@@ -90,13 +128,7 @@ const ProductCard = ({ product, store }: ProductCardProps) => {
           />
         </div>
 
-        <Price
-          card
-          // product={product}
-          price={product?.prices?.price.toString()}
-          // originalPrice={effectiveOriginalPrice}
-          // campaign={isInCampaign ? campaign : null}
-        />
+        {discountedPriceUi()}
 
         {/* Campaign sold bar */}
         {/* {isInCampaign && (
