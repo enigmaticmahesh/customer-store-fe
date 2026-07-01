@@ -13,6 +13,7 @@ import { Eye, Minus, Plus, ShoppingBag } from "lucide-react";
 import { useStore, type StoreApi } from "zustand";
 import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
 import type { AtLeastOne } from "@/interfaces/app-global.interface";
+import DiscountBadge from "../discount-badge.component";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
   quickViewProd: any | null;
@@ -113,10 +114,19 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                 {product?.description?.en}
               </p>
               <div className="flex items-center my-4">
-                <Price price={product?.prices.price.toString()} card={false} />
-                {/* <span className="ml-2">
-                                            <Discount slug product={product} discount={discount} />
-                                            </span> */}
+                <Price
+                  price={product?.prices.price}
+                  originalPrice={product?.prices.originalPrice}
+                  card={false}
+                />
+                <span className="ml-2">
+                  <DiscountBadge
+                    // product={product}
+                    slug
+                    price={product?.prices.price}
+                    originalPrice={product?.prices.originalPrice}
+                  />
+                </span>
               </div>
               {/* {isInCampaign && campaign && (
                                         <div className="mb-4 px-3 py-2 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">

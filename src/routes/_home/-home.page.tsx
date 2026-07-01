@@ -1,4 +1,5 @@
 import CarouselSection from "./-components/carousel-section.component";
+import DiscountedProducts from "./-components/discounted-products/discounted-products.component";
 import FeaturedCategory from "./-components/featured-category.component";
 import PopularProducts from "./-components/popular-products/popular-products.component";
 
@@ -13,6 +14,9 @@ const HomePage = () => {
 
       {/* popular products */}
       <PopularProducts />
+
+      {/* discounted products */}
+      <DiscountedProducts />
     </div>
   );
 };

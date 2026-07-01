@@ -1,34 +1,43 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { product } from './-temp.data'
-import ImageWithFallback from '@/components/custom/image-with-fallback.component'
-import ProductStock from '@/components/custom/product-stock.component'
-import Rating from '@/components/custom/product-rating.component'
-import Price from '@/components/custom/product-price.component'
-import { Button } from '@/components/ui/button'
-import { Home, IndianRupee, MapPin, Minus, Plus, Repeat, ShieldOff, Sun, Truck } from 'lucide-react'
-import { formatPriceString } from '@/app-utils/string-utils'
-import ProductReviews from './-component/product-reviews.component'
+import { createFileRoute } from "@tanstack/react-router";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { product } from "./-temp.data";
+import ImageWithFallback from "@/components/custom/image-with-fallback.component";
+import ProductStock from "@/components/custom/product-stock.component";
+import Rating from "@/components/custom/product-rating.component";
+import Price from "@/components/custom/product-price.component";
+import { Button } from "@/components/ui/button";
+import {
+  Home,
+  IndianRupee,
+  MapPin,
+  Minus,
+  Plus,
+  Repeat,
+  ShieldOff,
+  Sun,
+  Truck,
+} from "lucide-react";
+import { formatPriceString } from "@/app-utils/string-utils";
+import ProductReviews from "./-component/product-reviews.component";
 
 const ProductDetails = () => {
+  const stockUi = () => {
+    const stock = product?.stock;
+    if (!stock) return null;
 
-    const stockUi = () => {
-        const stock = product?.stock
-        if (!stock) return null
-
-        const stockClass = stock <= 0 ? "relative py-1 mb-2" : "relative"
-        return (
-            <div className={stockClass}>
-                <ProductStock stock={stock} />
-            </div>
-        )
-    }
-
+    const stockClass = stock <= 0 ? "relative py-1 mb-2" : "relative";
     return (
-      <div className="bg-background px-0">
-        <div className="container mx-auto px-3 sm:px-10 max-w-screen-2xl">
-          <div className="flex items-center py-4 lg:py-6">
-            {/* <ol className="flex items-center w-full overflow-hidden text-muted-foreground">
+      <div className={stockClass}>
+        <ProductStock stock={stock} />
+      </div>
+    );
+  };
+
+  return (
+    <div className="bg-background px-0">
+      <div className="container mx-auto px-3 sm:px-10 max-w-screen-2xl">
+        <div className="flex items-center py-4 lg:py-6">
+          {/* <ol className="flex items-center w-full overflow-hidden text-muted-foreground">
               <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-primary font-semibold">
                 <Link href="/">Home</Link>
               </li>
@@ -56,14 +65,14 @@ const ProductDetails = () => {
                 {showingTranslateValue(product?.title)}
               </li>
             </ol> */}
-          </div>
-          {/* Product */}
-          <div className="relative lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-8 mb-16">
-            {/* Product image */}
-            <div className="lg:col-span-3 lg:row-end-1">
-              {/* Image gallery */}
-              <div className="overflow-hidden w-full mx-auto">
-                {/* {product?.image?.[0] ? (
+        </div>
+        {/* Product */}
+        <div className="relative lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-8 mb-16">
+          {/* Product image */}
+          <div className="lg:col-span-3 lg:row-end-1">
+            {/* Image gallery */}
+            <div className="overflow-hidden w-full mx-auto">
+              {/* {product?.image?.[0] ? (
                   <Image
                     src={selectedImage || product.image[0]}
                     alt="product"
@@ -81,15 +90,15 @@ const ProductDetails = () => {
                     className="aspect-square w-full rounded-xl bg-muted object-cover"
                   />
                 )} */}
-                <ImageWithFallback
-                    src={product?.image?.[0]}
-                    width={500}
-                    height={500}
-                    className="aspect-square w-full rounded-xl bg-muted object-cover"
-                />
-              </div>
+              <ImageWithFallback
+                src={product?.image?.[0]}
+                width={500}
+                height={500}
+                className="aspect-square w-full rounded-xl bg-muted object-cover"
+              />
+            </div>
 
-              {/* {product?.image?.length > 1 && (
+            {/* {product?.image?.length > 1 && (
                 <div className="flex flex-row flex-wrap mt-4">
                   <ImageCarousel
                     images={product.image}
@@ -97,12 +106,12 @@ const ProductDetails = () => {
                   />
                 </div>
               )} */}
-            </div>
+          </div>
 
-            {/* Product details */}
-            <div className="lg:sticky mt-6 lg:mt-0 self-start z-10 mx-auto lg:col-span-4 lg:row-span-2 lg:row-end-2 lg:max-w-none">
-              {/* Campaign Banner */}
-              {/* {isInCampaign && campaign && (
+          {/* Product details */}
+          <div className="lg:sticky mt-6 lg:mt-0 self-start z-10 mx-auto lg:col-span-4 lg:row-span-2 lg:row-end-2 lg:max-w-none">
+            {/* Campaign Banner */}
+            {/* {isInCampaign && campaign && (
                 <div className="mb-4 px-4 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <div className="flex items-center gap-2">
@@ -123,36 +132,36 @@ const ProductDetails = () => {
                 </div>
               )} */}
 
-              <div className="mb-2 md:mb-2.5 block -mt-1.5">
-                <div className="relative">
-                  {/* <Stock stock={stock} /> */}
-                  {stockUi()}
-                </div>
-                <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold  text-foreground">
-                  {/* {showingTranslateValue(product?.title)} */}
-                  {product.title.en}
-                </h1>
-                <div className="flex gap-0.5 items-center mt-1">
-                  <Rating
-                    size="md"
-                    showReviews={true}
-                    rating={product?.average_rating}
-                    totalReviews={product?.total_reviews}
-                  />
-                </div>
+            <div className="mb-2 md:mb-2.5 block -mt-1.5">
+              <div className="relative">
+                {/* <Stock stock={stock} /> */}
+                {stockUi()}
               </div>
-              <div className="flex items-center mb-8">
-                <Price
-                  price={product.prices.price.toString()}
-                //   product={product}
-                //   originalPrice={originalPrice}
-                //   campaign={isInCampaign ? campaign : null}
+              <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold  text-foreground">
+                {/* {showingTranslateValue(product?.title)} */}
+                {product.title.en}
+              </h1>
+              <div className="flex gap-0.5 items-center mt-1">
+                <Rating
+                  size="md"
+                  showReviews={true}
+                  rating={product?.average_rating}
+                  totalReviews={product?.total_reviews}
                 />
-                {/* <span className="ml-2 block">
+              </div>
+            </div>
+            <div className="flex items-center mb-8">
+              <Price
+                price={product.prices.price}
+                //   product={product}
+                originalPrice={product.prices.originalPrice}
+                //   campaign={isInCampaign ? campaign : null}
+              />
+              {/* <span className="ml-2 block">
                   <Discount slug product={product} discount={discount} />
                 </span> */}
-              </div>
-              {/* <div className="mb-6">
+            </div>
+            {/* <div className="mb-6">
                 {variantTitle?.map((a, i) => (
                   <span key={a._id} className="mb-2 block">
                     <h4 className="text-sm py-1 text-foreground font-medium">
@@ -173,50 +182,50 @@ const ProductDetails = () => {
                 ))}
               </div> */}
 
-              <div>
-                <div className="flex items-center mt-4">
-                  <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 w-full">
-                    {/* Quantity Selector */}
-                    <div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border h-11 border-border">
-                      <Button
-                        variant="outline"
-                        // onClick={() => setItem(item - 1)}
-                        // disabled={item === 1}
-                        className="border-0 border-e border-border rounded-none flex items-center justify-center h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-foreground hover:text-muted-foreground"
-                      >
-                        <span className="sm:text-2xl">
-                          <Minus />
-                        </span>
-                      </Button>
-
-                      <p className="font-semibold flex items-center justify-center transition-colors duration-250 ease-in-out cursor-default shrink-0 text-base text-foreground w-10 md:w-20 xl:w-22">
-                        1
-                      </p>
-
-                      <Button
-                        variant="outline"
-                        // onClick={() => setItem(item + 1)}
-                        // disabled={selectVariant?.quantity <= item}
-                        className="border-0 border-s border-border rounded-none flex items-center justify-center h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-foreground hover:text-muted-foreground"
-                      >
-                        <span className="sm:text-2xl">
-                          <Plus />
-                        </span>
-                      </Button>
-                    </div>
-
-                    {/* Add to Cart Button */}
+            <div>
+              <div className="flex items-center mt-4">
+                <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 w-full">
+                  {/* Quantity Selector */}
+                  <div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border h-11 border-border">
                     <Button
-                    //   onClick={() => handleAddToCart(item)}
-                      className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-11"
-                    //   variant="create"
+                      variant="outline"
+                      // onClick={() => setItem(item - 1)}
+                      // disabled={item === 1}
+                      className="border-0 border-e border-border rounded-none flex items-center justify-center h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-foreground hover:text-muted-foreground"
                     >
-                      Add to Cart
+                      <span className="sm:text-2xl">
+                        <Minus />
+                      </span>
+                    </Button>
+
+                    <p className="font-semibold flex items-center justify-center transition-colors duration-250 ease-in-out cursor-default shrink-0 text-base text-foreground w-10 md:w-20 xl:w-22">
+                      1
+                    </p>
+
+                    <Button
+                      variant="outline"
+                      // onClick={() => setItem(item + 1)}
+                      // disabled={selectVariant?.quantity <= item}
+                      className="border-0 border-s border-border rounded-none flex items-center justify-center h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-foreground hover:text-muted-foreground"
+                    >
+                      <span className="sm:text-2xl">
+                        <Plus />
+                      </span>
                     </Button>
                   </div>
-                </div>
 
-                {/* <div className="flex items-center mt-4">
+                  {/* Add to Cart Button */}
+                  <Button
+                    //   onClick={() => handleAddToCart(item)}
+                    className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-11"
+                    //   variant="create"
+                  >
+                    Add to Cart
+                  </Button>
+                </div>
+              </div>
+
+              {/* <div className="flex items-center mt-4">
                   <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
                     <div>
                       <span className=" font-semibold py-1 text-sm d-block">
@@ -239,7 +248,7 @@ const ProductDetails = () => {
                     </div>
                   </div>
                 </div> */}
-                {/* <div className="flex items-center text-sm text-muted-foreground mt-3">
+              {/* <div className="flex items-center text-sm text-muted-foreground mt-3">
                   <FiHeadphones className="mr-1 text-md" />
                   Call Us for Order
                   <a
@@ -250,15 +259,15 @@ const ProductDetails = () => {
                   </a>
                 </div> */}
 
-                <div className="mt-6 border-t border-border pt-6">
-                  <h3 className="text-sm font-medium text-foreground">
-                    Highlights
-                  </h3>
-                  <div className="mt-4">
-                    {/* shipping description card */}
-                    {/* <Card storeCustomization={storeCustomization} /> */}
-                    <ul className="my-0">
-                        {/* {items.map((item, index) => (
+              <div className="mt-6 border-t border-border pt-6">
+                <h3 className="text-sm font-medium text-foreground">
+                  Highlights
+                </h3>
+                <div className="mt-4">
+                  {/* shipping description card */}
+                  {/* <Card storeCustomization={storeCustomization} /> */}
+                  <ul className="my-0">
+                    {/* {items.map((item, index) => (
                             <li key={index} className="flex items-center py-2">
                             <span className="text-lg text-muted-foreground items-start mr-3">
                                 {item.icon}
@@ -268,67 +277,69 @@ const ProductDetails = () => {
                             </p>
                             </li>
                         ))} */}
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <Truck />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                Free shipping applies to all orders over shipping {formatPriceString('100')}
-                            </p>
-                        </li>
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <Home />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                Home Delivery within 1 Hour
-                            </p>
-                        </li>
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <IndianRupee />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                Cash on Delivery Available
-                            </p>
-                        </li>
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <Repeat />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                7 Days returns money back guarantee
-                            </p>
-                        </li>
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <ShieldOff />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                Warranty not available for this item
-                            </p>
-                        </li>
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <Sun />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                Guaranteed 100% organic from natural products.
-                            </p>
-                        </li>
-                        <li className="flex items-center py-2">
-                            <span className="text-lg text-muted-foreground items-start mr-3">
-                                <MapPin />
-                            </span>
-                            <p className="font-sans leading-5 text-sm text-muted-foreground">
-                                Delivery from our pick point Boho One, Bridge Street West, Middlesbrough, North Yorkshire, TS2 1AE.
-                            </p>
-                        </li>
-                    </ul>
-                  </div>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <Truck />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        Free shipping applies to all orders over shipping{" "}
+                        {formatPriceString("100")}
+                      </p>
+                    </li>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <Home />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        Home Delivery within 1 Hour
+                      </p>
+                    </li>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <IndianRupee />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        Cash on Delivery Available
+                      </p>
+                    </li>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <Repeat />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        7 Days returns money back guarantee
+                      </p>
+                    </li>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <ShieldOff />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        Warranty not available for this item
+                      </p>
+                    </li>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <Sun />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        Guaranteed 100% organic from natural products.
+                      </p>
+                    </li>
+                    <li className="flex items-center py-2">
+                      <span className="text-lg text-muted-foreground items-start mr-3">
+                        <MapPin />
+                      </span>
+                      <p className="font-sans leading-5 text-sm text-muted-foreground">
+                        Delivery from our pick point Boho One, Bridge Street
+                        West, Middlesbrough, North Yorkshire, TS2 1AE.
+                      </p>
+                    </li>
+                  </ul>
                 </div>
+              </div>
 
-                {/* <div className="mt-6 border-t border-border pt-6">
+              {/* <div className="mt-6 border-t border-border pt-6">
                   <h3 className="text-sm font-medium text-foreground">
                     Share your social network
                   </h3>
@@ -403,10 +414,10 @@ const ProductDetails = () => {
                     </li>
                   </ul>
                 </div> */}
-              </div>
             </div>
-            <div className="mx-auto w-full lg:col-span-3 lg:my-0 my-8 lg:max-w-none">
-              {/* <TabGroup>
+          </div>
+          <div className="mx-auto w-full lg:col-span-3 lg:my-0 my-8 lg:max-w-none">
+            {/* <TabGroup>
                 <div className="border-b border-border">
                   <TabList className="-mb-px flex space-x-8">
                     <Tab className="cursor-pointer border-b-2 border-transparent pb-3 text-sm font-medium whitespace-nowrap text-muted-foreground hover:border-border focus:outline-0 hover:text-foreground data-selected:border-primary data-selected:text-primary">
@@ -437,31 +448,31 @@ const ProductDetails = () => {
                   </TabPanel>
                 </TabPanels>
               </TabGroup> */}
-                <Tabs defaultValue="reviews">
-                    <div className="border-b border-border">
-                        <TabsList variant="line">
-                            <TabsTrigger value="reviews">Reviews</TabsTrigger>
-                            <TabsTrigger value="description">Description</TabsTrigger>
-                            {/* <TabsTrigger value="reports">Reports</TabsTrigger> */}
-                        </TabsList>
-                    </div>
-                    <TabsContent value="reviews">
-                        <h3 className="sr-only">Reviews</h3>
-                        {/* <ProductReviews reviews={reviews} /> */}
-                        <ProductReviews />
-                    </TabsContent>
-                    <TabsContent value="description">
-                        <h3 className="sr-only">Description</h3>
-                        <p className="text-sm leading-6 text-muted-foreground md:leading-6 mb-3">
-                            {product.description.en}
-                        </p>
-                        <div className="text-sm text-muted-foreground [&_h4]:mt-5 [&_h4]:font-medium [&_h4]:text-foreground [&_li]:pl-2 [&_li::marker]:text-muted-foreground [&_p]:my-2 [&_p]:text-sm/6 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5 [&_ul]:text-sm/6 *:first:mt-0" />
-                    </TabsContent>
-                </Tabs>
-            </div>
+            <Tabs defaultValue="reviews">
+              <div className="border-b border-border">
+                <TabsList variant="line">
+                  <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                  <TabsTrigger value="description">Description</TabsTrigger>
+                  {/* <TabsTrigger value="reports">Reports</TabsTrigger> */}
+                </TabsList>
+              </div>
+              <TabsContent value="reviews">
+                <h3 className="sr-only">Reviews</h3>
+                {/* <ProductReviews reviews={reviews} /> */}
+                <ProductReviews />
+              </TabsContent>
+              <TabsContent value="description">
+                <h3 className="sr-only">Description</h3>
+                <p className="text-sm leading-6 text-muted-foreground md:leading-6 mb-3">
+                  {product.description.en}
+                </p>
+                <div className="text-sm text-muted-foreground [&_h4]:mt-5 [&_h4]:font-medium [&_h4]:text-foreground [&_li]:pl-2 [&_li::marker]:text-muted-foreground [&_p]:my-2 [&_p]:text-sm/6 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5 [&_ul]:text-sm/6 *:first:mt-0" />
+              </TabsContent>
+            </Tabs>
           </div>
-          {/* related products */}
-          {/* {relatedProducts?.length >= 2 && (
+        </div>
+        {/* related products */}
+        {/* {relatedProducts?.length >= 2 && (
             <div className="pt-10 lg:pt-16 lg:pb-10 mt-8 border-t border-border">
               <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl mb-6">
                 Related Products
@@ -481,11 +492,11 @@ const ProductDetails = () => {
               </div>
             </div>
           )} */}
-        </div>
       </div>
-    )
-}
+    </div>
+  );
+};
 
-export const Route = createFileRoute('/_home/product/$productId')({
+export const Route = createFileRoute("/_home/product/$productId")({
   component: ProductDetails,
-})
+});
