@@ -1,0 +1,4 @@
+export const CART_EVENTS = {
+  OPEN_CART: "OPEN_CART",
+  CLOSE_CART: "CLOSE_CART",
+};
