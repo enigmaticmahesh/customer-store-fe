@@ -2,19 +2,23 @@ import { Button } from "@/components/ui/button";
 import useSearchState from "../-stores/useSearch.store";
 import ProductsToolbar from "./products-toolbar.component";
 import ProductCard from "@/components/custom/product/product-card.component";
-import type { SortedProd } from "../-temp-data";
+import { useFetchProds } from "../-queries/get-products.query";
+import type { Product } from "@/interfaces/app-global.interface";
+import noResults from "@/assets/no-result.svg";
 
 const FilteredProducts = () => {
-  const sortedProducts = useSearchState((state) => state.products);
+  // const products = useSearchState((state) => state.products);
   const viewMode = useSearchState((state) => state.viewMode);
+  const { data: prodsApiData } = useFetchProds();
+  const products = prodsApiData.products;
 
   const prodsListUi = () => {
-    if (!sortedProducts.length) {
+    if (!products.length) {
       return (
         <div className="flex flex-col items-center justify-center rounded-2xl bg-card py-20 px-8 text-center border border-border shadow-sm">
           <img
             className="mb-6 opacity-80"
-            src="/no-result.svg"
+            src={noResults}
             alt="No results"
             width={260}
             height={250}
@@ -38,9 +42,9 @@ const FilteredProducts = () => {
     }
 
     const listClass = `grid gap-3 lg:gap-4 ${viewMode === "grid" ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`;
-    const productsList = sortedProducts.map((product: SortedProd) => (
+    const productsList = products.map((product: Product) => (
       <ProductCard
-        key={product._id}
+        key={product.id}
         product={product}
         store={useSearchState}
         // attributes={attributes}
@@ -48,16 +52,7 @@ const FilteredProducts = () => {
     ));
     return (
       <>
-        <div className={listClass}>
-          {/* {sortedProducts?.slice(0, visibleProduct).map((product) => (
-                        <ProductCard
-                            key={product._id}
-                            product={product}
-                            attributes={attributes}
-                        />
-                    ))} */}
-          {productsList}
-        </div>
+        <div className={listClass}>{productsList}</div>
 
         {/* {sortedProducts?.length > visibleProduct && (
                     <div className="mt-10 text-center">

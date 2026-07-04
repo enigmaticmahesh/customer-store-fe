@@ -1,12 +1,15 @@
 import { Grid2x2, List, ListFilter } from "lucide-react";
 import useSearchState from "../-stores/useSearch.store";
 import type { ChangeEvent } from "react";
+import { useFetchProds } from "../-queries/get-products.query";
 
 const ProductsToolbar = () => {
   const updateStore = useSearchState((state) => state.updateStore);
   const viewMode = useSearchState((state) => state.viewMode);
-  const sortedProducts = useSearchState((state) => state.products);
+  // const sortedProducts = useSearchState((state) => state.products);
   const sortBy = useSearchState((state) => state.sortBy);
+  const { data: prodsApiData } = useFetchProds();
+  const products = prodsApiData.products;
 
   const toggleFilters = (toggle: boolean) => () =>
     updateStore({ showFilters: toggle });
@@ -42,7 +45,7 @@ const ProductsToolbar = () => {
         </div>
 
         <span className="text-sm text-muted-foreground hidden sm:inline">
-          {sortedProducts?.length || 0} results
+          {products.length || 0} results
         </span>
       </div>
 

@@ -4,6 +4,7 @@ import useDiscountedProductsStore from "./discounted-products.store";
 import { discountedProducts } from "./temp.data";
 
 import QuickViewModal from "@/components/custom/product/quick-view-prod-modal.component";
+import { useFetchDiscountedProds } from "../../-queries/get-discounted-prods.query";
 
 const DiscountedProductQuickViewModal = () => {
   return <QuickViewModal store={useDiscountedProductsStore} />;
@@ -12,17 +13,17 @@ const DiscountedProductQuickViewModal = () => {
 // export default DiscountedProductQuickViewModal;
 
 const DiscountedProductsContent = () => {
-  const prodsListUi = discountedProducts
-    ?.slice(0, storeCustomizationSetting?.home?.popular_product_limit)
-    .map((product) => (
-      <ProductCard
-        key={product._id}
-        product={product}
-        // attributes={attributes}
-        store={useDiscountedProductsStore}
-        showDiscount={true}
-      />
-    ));
+  const { data: products } = useFetchDiscountedProds();
+  // const products = prodsApiData.products;
+  const prodsListUi = products.map((product) => (
+    <ProductCard
+      key={product.id}
+      product={product}
+      // attributes={attributes}
+      store={useDiscountedProductsStore}
+      showDiscount={true}
+    />
+  ));
 
   return (
     storeCustomizationSetting?.home?.discount_product_status &&

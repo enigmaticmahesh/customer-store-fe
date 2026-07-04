@@ -4,9 +4,10 @@ import type {
   SearchState,
   SearchStoreState,
 } from "../-search-page.interface";
-import { sortedProducts, topCategories, type SortedProd } from "../-temp-data";
+import { topCategories } from "../-temp-data";
 import createProdListStore from "@/stores/products-list-store-skeleton";
 import type { ProdListSkeletonStateType } from "@/interfaces/common-prod-list.interface";
+import type { Product } from "@/interfaces/app-global.interface";
 
 const InitialState: SearchState = {
   showFilters: false,
@@ -20,17 +21,21 @@ const InitialState: SearchState = {
   priceRange: { min: 0, max: 1000 },
   viewMode: "grid",
   sortBy: "default",
+  limit: 10,
+  dir: undefined,
+  cursor: undefined,
+  name: undefined,
 };
 
-const InitProdListData: ProdListSkeletonStateType<SortedProd> = {
-  products: sortedProducts,
+const InitProdListData: ProdListSkeletonStateType<Product> = {
+  products: [],
   quickView: false,
   quickViewProd: null,
 };
 
 const useSearchState = create<SearchStore>((set, get, ...args) => ({
   ...InitialState,
-  ...createProdListStore<SortedProd>(InitProdListData)(set, get, ...args),
+  ...createProdListStore<Product>(InitProdListData)(set, get, ...args),
   updateStore: (data: Partial<SearchStoreState>) =>
     set((state) => ({ ...state, ...data })),
   toggleSection: (section) =>

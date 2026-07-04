@@ -6,12 +6,13 @@ import Price from "../product-price.component";
 import AddToCartBtn from "../cart/add-to-cart-btn.component";
 import { useStore, type StoreApi } from "zustand";
 import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
-import type { AtLeastOne } from "@/interfaces/app-global.interface";
+import type { AtLeastOne, Product } from "@/interfaces/app-global.interface";
 import DiscountBadge from "../discount-badge.component";
 import DiscountedPrice from "../discounted-price.component";
+import { getImgUrl } from "@/app-utils/img-utils";
 
 type ProductCardProps = {
-  product: any;
+  product: Product;
   showDiscount?: boolean;
   // openQuickView: () => void;
   store: StoreApi<AtLeastOne<BaseProdStoreContract>>;
@@ -36,8 +37,8 @@ const ProductCard = ({
   const discountBadgeUi = showDiscount && (
     <div className="w-full flex justify-between">
       <DiscountBadge
-        price={product.prices.price}
-        originalPrice={product.prices.originalPrice}
+        price={Number(product.mrp)}
+        originalPrice={Number(product.mrp) + 1}
       />
     </div>
   );
@@ -48,8 +49,8 @@ const ProductCard = ({
         <DiscountedPrice
           card
           product={product}
-          price={product.prices.price}
-          originalPrice={product.prices.originalPrice}
+          price={Number(product.mrp)}
+          originalPrice={Number(product.mrp) + 1}
         />
       );
     }
@@ -58,8 +59,8 @@ const ProductCard = ({
       <Price
         card
         // product={product}
-        price={product?.prices?.price}
-        originalPrice={product?.prices?.originalPrice}
+        price={Number(product.mrp)}
+        originalPrice={Number(product.mrp) + 1}
         // campaign={isInCampaign ? campaign : null}
       />
     );
@@ -79,7 +80,7 @@ const ProductCard = ({
             // fill
             sizes="100%"
             alt="product"
-            src={product.image?.[0]}
+            src={getImgUrl(product.sku, product.id, 1)}
           />
         </Link>
         <div className="absolute lg:bottom-0 bottom-4 lg:group-hover:bottom-4 inset-x-1 opacity-100 flex justify-center lg:opacity-0 lg:invisible group-hover:opacity-100 group-hover:visible transition-all">
@@ -116,15 +117,15 @@ const ProductCard = ({
             className="text-sm font-medium text-foreground line-clamp-1 hover:text-primary"
           >
             {/* {showingTranslateValue(product?.title)} */}
-            {product?.title?.en}
+            {product.name}
           </Link>
         </div>
         <div className="flex gap-0.5 items-center">
           <Rating
             size="md"
             showReviews={true}
-            rating={product?.average_rating}
-            totalReviews={product?.total_reviews}
+            rating={3.125}
+            totalReviews={8}
           />
         </div>
 

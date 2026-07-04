@@ -1,22 +1,23 @@
 import ProductCard from "@/components/custom/product/product-card.component";
 import { storeCustomizationSetting } from "../temp-data";
 import usePopularProductsStore from "./popular-products.store";
-import type { PopularProd } from "./temp.data";
+// import type { PopularProd } from "./temp.data";
+import { useFetchPopularProds } from "../../-queries/get-popular-prod.query";
+import type { Product } from "@/interfaces/app-global.interface";
 
 const PopularProductsContent = () => {
-  const popularProducts = usePopularProductsStore((state) => state.products);
+  // const popularProducts = usePopularProductsStore((state) => state.products);
   // createStoreSubscriber(usePopularProductsStore)
+  const { data: popularProducts } = useFetchPopularProds();
 
-  const prodsListUi = popularProducts
-    ?.slice(0, storeCustomizationSetting?.home?.latest_discount_product_limit)
-    .map((product: PopularProd) => (
-      <ProductCard
-        key={product._id}
-        product={product}
-        store={usePopularProductsStore}
-        // attributes={attributes}
-      />
-    ));
+  const prodsListUi = popularProducts.map((product: Product) => (
+    <ProductCard
+      key={product.id}
+      product={product}
+      store={usePopularProductsStore}
+      // attributes={attributes}
+    />
+  ));
 
   return (
     storeCustomizationSetting?.home?.popular_products_status && (
