@@ -9,3 +9,30 @@ export type AtLeastOne<T, Keys extends keyof T = keyof T> =
   {
     [K in Keys]-?: Record<K, T[K]> & Partial<Pick<T, Exclude<Keys, K>>>;
   }[Keys];
+
+export interface Product {
+  id: number;
+  name: string;
+  mrp: string;
+  price: string;
+  qty: string;
+  mfD: string;
+  expD: string;
+  sku: string;
+  barCode: string;
+  hsnId: number;
+  brandId: number;
+  subcatId: number;
+  hsnCode: {
+    id: number;
+    code: string;
+  };
+  brand: {
+    id: number;
+    name: string;
+  };
+  subCat: {
+    id: number;
+    name: string;
+  };
+}
