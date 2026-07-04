@@ -12,11 +12,12 @@ import Price from "@/components/custom/product-price.component";
 import { Eye, Minus, Plus, ShoppingBag } from "lucide-react";
 import { useStore, type StoreApi } from "zustand";
 import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
-import type { AtLeastOne } from "@/interfaces/app-global.interface";
+import type { AtLeastOne, Product } from "@/interfaces/app-global.interface";
 import DiscountBadge from "../discount-badge.component";
+import { getImgUrl } from "@/app-utils/img-utils";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
-  quickViewProd: any | null;
+  quickViewProd: Product | null;
 };
 
 type ProductQuickViewProps = {
@@ -29,7 +30,7 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
   const product = useStore(store, (state) => state.quickViewProd!);
 
   const stockUi = () => {
-    const stock = product?.stock;
+    const stock = Number(product.qty);
     if (!stock) return null;
 
     const stockClass = stock <= 0 ? "relative py-1 mb-2" : "relative";
@@ -75,7 +76,7 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                                     </div> */}
             <div className="w-full lg:w-[40%]">
               <ImageWithFallback
-                src={product?.image?.[0]}
+                src={getImgUrl(product.sku, product.id, 1)}
                 width={420}
                 height={420}
               />
@@ -93,10 +94,10 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                                             </Link> */}
                 <Link
                   to="/product/$productId"
-                  params={{ productId: product._id }}
+                  params={{ productId: product.id.toString() }}
                 >
                   <h2 className="text-foreground text-lg md:text-xl lg:text-xl font-medium hover:text-primary cursor-pointer">
-                    {product.title.en}
+                    {product.name}
                   </h2>
                 </Link>
                 <div className="flex gap-0.5 items-center mt-1">
@@ -104,27 +105,38 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                   <Rating
                     size="md"
                     showReviews={true}
-                    rating={product?.average_rating}
-                    totalReviews={product?.total_reviews}
+                    rating={3.75}
+                    totalReviews={8}
                   />
                 </div>
               </div>
               <p className="text-sm leading-6 text-muted-foreground md:leading-6">
                 {/* {showingTranslateValue(product?.description)} */}
-                {product?.description?.en}
+                {/*{product?.description?.en}*/}
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since 1966, when designers at Letraset and James
+                Mosley, the librarian at St Bride Printing Library in London,
+                took a 1914 Cicero translation and scrambled it to make dummy
+                text for Letraset's Body Type sheets. It has survived not only
+                many decades, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised thanks to
+                these sheets and more recently with desktop publishing software
+                like Aldus PageMaker and Microsoft Word including versions of
+                Lorem Ipsum.
               </p>
               <div className="flex items-center my-4">
                 <Price
-                  price={product?.prices.price}
-                  originalPrice={product?.prices.originalPrice}
+                  price={Number(product.mrp)}
+                  originalPrice={Number(product.price) + 1}
                   card={false}
                 />
                 <span className="ml-2">
                   <DiscountBadge
                     // product={product}
                     slug
-                    price={product?.prices.price}
-                    originalPrice={product?.prices.originalPrice}
+                    price={Number(product.mrp)}
+                    originalPrice={Number(product.price) + 1}
                   />
                 </span>
               </div>
@@ -190,7 +202,7 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                   </button>
                   <Link
                     to="/product/$productId"
-                    params={{ productId: product._id }}
+                    params={{ productId: product.id.toString() }}
                     // href={`/product/${product.slug}`}
                     // passHref
                     className="w-full relative h-auto flex items-center font-semibold text-sm text-foreground justify-center rounded-md transition-colors py-2 px-4 border border-border bg-card hover:bg-accent hover:text-primary"
