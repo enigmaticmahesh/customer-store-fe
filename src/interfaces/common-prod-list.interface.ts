@@ -1,7 +1,9 @@
-export interface ProdListSkeletonStateType<T> {
-  products: T[];
+// import type { Product } from "./app-global.interface";
+
+export interface ProdListSkeletonStateType<Product> {
+  products: Product[];
   quickView: boolean;
-  quickViewProd: T | null;
+  quickViewProd: Product | null;
 }
 
 export interface ProdListActionType<T> {

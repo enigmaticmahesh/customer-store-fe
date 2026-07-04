@@ -4,18 +4,16 @@ import type {
 } from "@/interfaces/common-prod-list.interface";
 import createProdListStore from "@/stores/products-list-store-skeleton";
 import { create } from "zustand";
-import { popularProducts } from "./temp.data";
+import type { Product } from "@/interfaces/app-global.interface";
 
-type PopularProduct = (typeof popularProducts)[number];
-
-const InitialState: ProdListSkeletonStateType<PopularProduct> = {
-  products: popularProducts,
+const InitialState: ProdListSkeletonStateType<Product> = {
+  products: [],
   quickView: false,
   quickViewProd: null,
 };
 
-const usePopularProductsStore = create<ProdListStoreType<PopularProduct>>(
-  createProdListStore<PopularProduct>(InitialState),
+const usePopularProductsStore = create<ProdListStoreType<Product>>(
+  createProdListStore<Product>(InitialState),
 );
 
 export default usePopularProductsStore;
