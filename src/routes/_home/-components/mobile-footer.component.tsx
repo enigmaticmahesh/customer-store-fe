@@ -1,5 +1,6 @@
 import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import { CART_EVENTS } from "@/configs/event.config";
+import useCart from "@/stores/cart.store";
 import { Link } from "@tanstack/react-router";
 import { Home, ShoppingCart, TextAlignStart, User } from "lucide-react";
 
@@ -15,9 +16,9 @@ const userInfo = {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk3MTNjMWQ4ODY5MTMzZTg4ODFlOSIsImlhdCI6MTc4MTQyMDU5NiwiZXhwIjoxNzgyMDI1Mzk2fQ.5I_EwQD-y5f5uVnzZkixGV1Qh2MSMz3DGXF1ZDIvNSI",
 };
 
-const totalItems = 3;
-
 const MobileFooter = () => {
+  const noOfItems = useCart((state) => state.noOfItems);
+  const totalItems = noOfItems();
   const openCart = () => {
     document.dispatchEvent(new CustomEvent(CART_EVENTS.OPEN_CART));
   };
