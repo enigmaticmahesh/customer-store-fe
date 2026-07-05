@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import {
   DialogDescription,
   DialogHeader,
@@ -9,12 +9,13 @@ import ImageWithFallback from "@/components/custom/image-with-fallback.component
 import ProductStock from "@/components/custom/product-stock.component";
 import Rating from "@/components/custom/product-rating.component";
 import Price from "@/components/custom/product-price.component";
-import { Eye, Minus, Plus, ShoppingBag } from "lucide-react";
+import { Eye, ShoppingBag } from "lucide-react";
 import { useStore, type StoreApi } from "zustand";
 import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
 import type { AtLeastOne, Product } from "@/interfaces/app-global.interface";
 import DiscountBadge from "../discount-badge.component";
 import { getImgUrl } from "@/app-utils/img-utils";
+import useCart from "@/stores/cart.store";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
   quickViewProd: Product | null;
@@ -28,6 +29,38 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
   // Adding "!" so that product will be available for sure
   // const product = useSearchState((state) => state.quickViewProd!);
   const product = useStore(store, (state) => state.quickViewProd!);
+  const navigate = useNavigate();
+  const updateStore = useStore(
+    store,
+    (state) => state.updateStore || state.updateProdListStore,
+  );
+  const addToCart = useCart((state) => state.addToCart);
+  const prodId = useCart(
+    (state) => state.cartItemsTracker.get(product.id.toString())?.id,
+  );
+  // const decQty = useCart((state) => state.decQty);
+  // const incQty = useCart((state) => state.incQty);
+  // const itemQty = useCart(
+  //   (state) => state.cartItemsTracker.get(product.id.toString())?.qty ?? 0,
+  // );
+
+  // const handleInc = () => {
+  //   incQty(product.id.toString());
+  // };
+  // const handleDec = () => {
+  //   decQty(product.id.toString());
+  // };
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+  const viewDetails = () => {
+    updateStore!({ quickView: false });
+    navigate({
+      to: "/product/$productId",
+      params: { productId: product.id.toString() },
+      viewTransition: true,
+    });
+  };
 
   const stockUi = () => {
     const stock = Number(product.qty);
@@ -81,7 +114,7 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                 height={420}
               />
             </div>
-            <div className="w-full pt-6 lg:pt-0 lg:pl-7 xl:pl-10">
+            <div className="w-full pt-6 lg:pt-0 lg:pl-7 xl:pl-10 flex flex-col">
               <div className="mb-2 md:mb-2.5 block -mt-1.5">
                 {stockUi()}
                 {/* <Link href={`/product/${product.slug}`}>
@@ -92,14 +125,17 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                                                 {showingTranslateValue(product?.title)}
                                             </h2>
                                             </Link> */}
-                <Link
+                {/*<Link
                   to="/product/$productId"
                   params={{ productId: product.id.toString() }}
                 >
                   <h2 className="text-foreground text-lg md:text-xl lg:text-xl font-medium hover:text-primary cursor-pointer">
                     {product.name}
                   </h2>
-                </Link>
+                </Link>*/}
+                <h2 className="text-foreground text-lg md:text-xl lg:text-xl font-medium hover:text-primary capitalize">
+                  {product.name}
+                </h2>
                 <div className="flex gap-0.5 items-center mt-1">
                   {/* Rating */}
                   <Rating
@@ -125,7 +161,7 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                 like Aldus PageMaker and Microsoft Word including versions of
                 Lorem Ipsum.
               </p>
-              <div className="flex items-center my-4">
+              <div className="flex items-center my-4 mt-auto">
                 <Price
                   price={Number(product.mrp)}
                   originalPrice={Number(product.price) + 1}
@@ -167,11 +203,11 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                                         </span>
                                         ))}
                                     </div> */}
-              <div className="flex items-center mt-4">
-                <div className="w-full grid lg:grid-cols-3 sm:grid-cols-3 gap-3">
-                  <div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border border-border">
+              {/*<div className="flex items-center mt-4">*/}
+              <div className="w-full grid lg:grid-cols-3 sm:grid-cols-3 gap-3">
+                {/*<div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border border-border">
                     <button
-                      //   onClick={() => setItem(item - 1)}
+                      onClick={handleDec}
                       //   disabled={item === 1}
                       className="flex items-center cursor-pointer justify-center py-2 px-4 h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-foreground border-e border-border hover:text-muted-foreground"
                     >
@@ -179,39 +215,35 @@ const QuickViewProduct = ({ store }: ProductQuickViewProps) => {
                         <Minus className="size-4.5" />
                       </span>
                     </button>
-                    <p className="font-semibold text-sm">1</p>
+                    <p className="font-semibold text-sm">
+                      {itemQty}
+                    </p>
                     <button
-                      //   onClick={() => setItem(item + 1)}
-                      //   disabled={
-                      //     product.quantity < item || product.quantity === item
-                      //   }
+                      onClick={handleInc}
                       className="flex items-center cursor-pointer justify-center py-2 px-4 h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-foreground border-s border-border hover:text-muted-foreground"
                     >
                       <span className="text-xl">
                         <Plus className="size-4.5" />
                       </span>
                     </button>
-                  </div>
-                  <button
-                    // onClick={() => handleAddToCart(item)}
-                    // disabled={product.quantity < 1}
-                    className="w-full text-sm flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-primary-foreground py-2 px-4 bg-primary hover:bg-primary/90"
-                  >
-                    <ShoppingBag className="mr-2 size-4.5" />
-                    Add to cart
-                  </button>
-                  <Link
-                    to="/product/$productId"
-                    params={{ productId: product.id.toString() }}
-                    // href={`/product/${product.slug}`}
-                    // passHref
-                    className="w-full relative h-auto flex items-center font-semibold text-sm text-foreground justify-center rounded-md transition-colors py-2 px-4 border border-border bg-card hover:bg-accent hover:text-primary"
-                  >
-                    <Eye className="mr-2 size-4.5" />
-                    View details
-                  </Link>
-                </div>
+                  </div>*/}
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full text-sm flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-primary-foreground py-2 px-4 bg-primary hover:bg-primary/90 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+                  disabled={Boolean(prodId)}
+                >
+                  <ShoppingBag className="mr-2 size-4.5" />
+                  Add to cart
+                </button>
+                <button
+                  onClick={viewDetails}
+                  className="w-full relative h-auto flex items-center font-semibold text-sm text-foreground justify-center rounded-md transition-colors py-2 px-4 border border-border bg-card hover:bg-accent hover:text-primary"
+                >
+                  <Eye className="mr-2 size-4.5" />
+                  View details
+                </button>
               </div>
+              {/*</div>*/}
               {/* <div className="flex items-center mt-4">
                                         <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
                                         <div>
