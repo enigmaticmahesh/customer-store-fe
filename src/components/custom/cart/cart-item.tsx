@@ -7,18 +7,21 @@ import useCart from "@/stores/cart.store";
 const CartItem = ({ itemId }: { itemId: string }) => {
   const decQty = useCart((state) => state.decQty);
   const incQty = useCart((state) => state.incQty);
-  const img = useCart((state) => state.cartItemsTracker.get(itemId)?.img ?? "");
-  const name = useCart(
-    (state) => state.cartItemsTracker.get(itemId)?.name ?? "",
+  const itemImg = useCart((state) => state.cartItemsTracker.get(itemId)?.img);
+  const itemName = useCart((state) => state.cartItemsTracker.get(itemId)?.name);
+  const itemPrice = useCart(
+    (state) => state.cartItemsTracker.get(itemId)?.price,
   );
-  const price = useCart(
-    (state) => state.cartItemsTracker.get(itemId)?.price ?? "0",
+  const itemAmount = useCart(
+    (state) => state.cartItemsTracker.get(itemId)?.amount,
   );
-  const amount = useCart(
-    (state) => state.cartItemsTracker.get(itemId)?.amount ?? "0",
-  );
-  const qty = useCart((state) => state.cartItemsTracker.get(itemId)?.qty ?? 0);
+  const itemQty = useCart((state) => state.cartItemsTracker.get(itemId)?.qty);
   const removeFromCart = useCart((state) => state.removeFromCart);
+  const name = itemName ?? "";
+  const img = itemImg ?? "";
+  const price = itemPrice ?? "0";
+  const amount = itemAmount ?? "0";
+  const qty = itemQty ?? 0;
 
   const handleInc = () => {
     incQty(itemId);
