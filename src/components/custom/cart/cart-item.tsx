@@ -3,25 +3,13 @@ import ImageWithFallback from "../image-with-fallback.component";
 import { formatPriceString } from "@/app-utils/string-utils";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import useCart from "@/stores/cart.store";
+import useCartItem from "./useCartItem.hook";
 
 const CartItem = ({ itemId }: { itemId: string }) => {
   const decQty = useCart((state) => state.decQty);
   const incQty = useCart((state) => state.incQty);
-  const itemImg = useCart((state) => state.cartItemsTracker.get(itemId)?.img);
-  const itemName = useCart((state) => state.cartItemsTracker.get(itemId)?.name);
-  const itemPrice = useCart(
-    (state) => state.cartItemsTracker.get(itemId)?.price,
-  );
-  const itemAmount = useCart(
-    (state) => state.cartItemsTracker.get(itemId)?.amount,
-  );
-  const itemQty = useCart((state) => state.cartItemsTracker.get(itemId)?.qty);
   const removeFromCart = useCart((state) => state.removeFromCart);
-  const name = itemName ?? "";
-  const img = itemImg ?? "";
-  const price = itemPrice ?? "0";
-  const amount = itemAmount ?? "0";
-  const qty = itemQty ?? 0;
+  const { name, img, price, amount, qty } = useCartItem(itemId);
 
   const handleInc = () => {
     incQty(itemId);
