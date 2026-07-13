@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/_home/route'
+import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as HomeIndexRouteImport } from './routes/_home/index'
 import { Route as HomeUserRouteRouteImport } from './routes/_home/user/route'
 import { Route as HomeUserIndexRouteImport } from './routes/_home/user/index'
@@ -19,6 +20,7 @@ import { Route as HomeOrdersIndexRouteImport } from './routes/_home/orders/index
 import { Route as HomeContactUsIndexRouteImport } from './routes/_home/contact-us/index'
 import { Route as HomeCheckoutIndexRouteImport } from './routes/_home/checkout/index'
 import { Route as HomeAboutUsIndexRouteImport } from './routes/_home/about-us/index'
+import { Route as AuthRegisterIndexRouteImport } from './routes/_auth/register/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
 import { Route as HomeProductProductIdRouteImport } from './routes/_home/product/$productId'
 import { Route as HomeOrdersOrderIdRouteImport } from './routes/_home/orders/$orderId'
@@ -29,6 +31,10 @@ import { Route as HomeUserChangePasswordIndexRouteImport } from './routes/_home/
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/_home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRouteRoute = AuthRouteRouteImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeIndexRoute = HomeIndexRouteImport.update({
@@ -76,10 +82,15 @@ const HomeAboutUsIndexRoute = HomeAboutUsIndexRouteImport.update({
   path: '/about-us/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const AuthRegisterIndexRoute = AuthRegisterIndexRouteImport.update({
+  id: '/register/',
+  path: '/register/',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
 const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
-  id: '/_auth/login/',
+  id: '/login/',
   path: '/login/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthRouteRoute,
 } as any)
 const HomeProductProductIdRoute = HomeProductProductIdRouteImport.update({
   id: '/product/$productId',
@@ -120,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/product/$productId': typeof HomeProductProductIdRoute
   '/login/': typeof AuthLoginIndexRoute
+  '/register/': typeof AuthRegisterIndexRoute
   '/about-us/': typeof HomeAboutUsIndexRoute
   '/checkout/': typeof HomeCheckoutIndexRoute
   '/contact-us/': typeof HomeContactUsIndexRoute
@@ -137,6 +149,7 @@ export interface FileRoutesByTo {
   '/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/product/$productId': typeof HomeProductProductIdRoute
   '/login': typeof AuthLoginIndexRoute
+  '/register': typeof AuthRegisterIndexRoute
   '/about-us': typeof HomeAboutUsIndexRoute
   '/checkout': typeof HomeCheckoutIndexRoute
   '/contact-us': typeof HomeContactUsIndexRoute
@@ -151,12 +164,14 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_auth': typeof AuthRouteRouteWithChildren
   '/_home': typeof HomeRouteRouteWithChildren
   '/_home/user': typeof HomeUserRouteRouteWithChildren
   '/_home/': typeof HomeIndexRoute
   '/_home/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/_home/product/$productId': typeof HomeProductProductIdRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
+  '/_auth/register/': typeof AuthRegisterIndexRoute
   '/_home/about-us/': typeof HomeAboutUsIndexRoute
   '/_home/checkout/': typeof HomeCheckoutIndexRoute
   '/_home/contact-us/': typeof HomeContactUsIndexRoute
@@ -177,6 +192,7 @@ export interface FileRouteTypes {
     | '/orders/$orderId'
     | '/product/$productId'
     | '/login/'
+    | '/register/'
     | '/about-us/'
     | '/checkout/'
     | '/contact-us/'
@@ -194,6 +210,7 @@ export interface FileRouteTypes {
     | '/orders/$orderId'
     | '/product/$productId'
     | '/login'
+    | '/register'
     | '/about-us'
     | '/checkout'
     | '/contact-us'
@@ -207,12 +224,14 @@ export interface FileRouteTypes {
     | '/user/update-profile'
   id:
     | '__root__'
+    | '/_auth'
     | '/_home'
     | '/_home/user'
     | '/_home/'
     | '/_home/orders/$orderId'
     | '/_home/product/$productId'
     | '/_auth/login/'
+    | '/_auth/register/'
     | '/_home/about-us/'
     | '/_home/checkout/'
     | '/_home/contact-us/'
@@ -227,8 +246,8 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
   HomeRouteRoute: typeof HomeRouteRouteWithChildren
-  AuthLoginIndexRoute: typeof AuthLoginIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -238,6 +257,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof HomeRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_home/': {
@@ -303,12 +329,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeAboutUsIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/_auth/register/': {
+      id: '/_auth/register/'
+      path: '/register'
+      fullPath: '/register/'
+      preLoaderRoute: typeof AuthRegisterIndexRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
     '/_auth/login/': {
       id: '/_auth/login/'
       path: '/login'
       fullPath: '/login/'
       preLoaderRoute: typeof AuthLoginIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthRouteRoute
     }
     '/_home/product/$productId': {
       id: '/_home/product/$productId'
@@ -354,6 +387,20 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AuthRouteRouteChildren {
+  AuthLoginIndexRoute: typeof AuthLoginIndexRoute
+  AuthRegisterIndexRoute: typeof AuthRegisterIndexRoute
+}
+
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthLoginIndexRoute: AuthLoginIndexRoute,
+  AuthRegisterIndexRoute: AuthRegisterIndexRoute,
+}
+
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
 
 interface HomeUserRouteRouteChildren {
   HomeUserIndexRoute: typeof HomeUserIndexRoute
@@ -406,8 +453,8 @@ const HomeRouteRouteWithChildren = HomeRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthRouteRoute: AuthRouteRouteWithChildren,
   HomeRouteRoute: HomeRouteRouteWithChildren,
-  AuthLoginIndexRoute: AuthLoginIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
