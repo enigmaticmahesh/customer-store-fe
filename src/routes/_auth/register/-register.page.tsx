@@ -1,27 +1,27 @@
-import { Link } from "@tanstack/react-router";
-import LoginForm from "./-components/login.form.component";
+import { Link } from "@tanstack/react-router"
+import RegisterForm from "./-components/register.form.component"
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
-          Sign in to your account
+          Create an account
         </h1>
         <p className="text-sm text-muted-foreground">
-          Don't have an account?&nbsp;
+          Already have an account?&nbsp;
           <Link
-            to="/register"
+            to="/login"
             className="text-primary font-semibold hover:underline"
             viewTransition
           >
-            Sign Up
+            Sign In
           </Link>
         </p>
       </div>
-      <LoginForm />
+      <RegisterForm />
     </>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default RegisterPage
