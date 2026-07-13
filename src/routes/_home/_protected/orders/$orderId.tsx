@@ -5,6 +5,6 @@ const OrderDetailsPage = () => {
     return <OrderInvoice />
 }
 
-export const Route = createFileRoute('/_home/orders/$orderId')({
+export const Route = createFileRoute('/_home/_protected/orders/$orderId')({
   component: OrderDetailsPage,
 })

@@ -13,17 +13,17 @@ export const useAuthUserStore = create<AuthStore>((set, get) => ({
 
         const {res, err} = await api.get('user/me').json<ApiResponse<AuthUser>>()
         .then((data: ApiResponse<AuthUser>) => ({res: data, err: null}))
-        .catch((err: any) => ({res: null, err}))
+        .catch((err: unknown) => ({res: null, err}))
 
         data.authenticating = false
         if (err) {
             get().updateStore(data)
             return err
         }
-        
+
         // "res" will always have data(but we have made the data in ApiResponse as optional) as we have checked for "err" before
-        data = {...data, ...res?.data} 
-        
+        data = {...data, ...res?.data}
+
         get().updateStore({...data})
         return err
     },

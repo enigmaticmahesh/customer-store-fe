@@ -12,22 +12,23 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as HomeIndexRouteImport } from './routes/_home/index'
-import { Route as HomeUserRouteRouteImport } from './routes/_home/user/route'
-import { Route as HomeUserIndexRouteImport } from './routes/_home/user/index'
+import { Route as HomeProtectedRouteRouteImport } from './routes/_home/_protected/route'
 import { Route as HomeSearchIndexRouteImport } from './routes/_home/search/index'
 import { Route as HomeProductIndexRouteImport } from './routes/_home/product/index'
-import { Route as HomeOrdersIndexRouteImport } from './routes/_home/orders/index'
 import { Route as HomeContactUsIndexRouteImport } from './routes/_home/contact-us/index'
-import { Route as HomeCheckoutIndexRouteImport } from './routes/_home/checkout/index'
 import { Route as HomeAboutUsIndexRouteImport } from './routes/_home/about-us/index'
 import { Route as AuthRegisterIndexRouteImport } from './routes/_auth/register/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
 import { Route as HomeProductProductIdRouteImport } from './routes/_home/product/$productId'
-import { Route as HomeOrdersOrderIdRouteImport } from './routes/_home/orders/$orderId'
-import { Route as HomeUserUpdateProfileIndexRouteImport } from './routes/_home/user/update-profile/index'
-import { Route as HomeUserOrdersIndexRouteImport } from './routes/_home/user/orders/index'
-import { Route as HomeUserDashboardIndexRouteImport } from './routes/_home/user/dashboard/index'
-import { Route as HomeUserChangePasswordIndexRouteImport } from './routes/_home/user/change-password/index'
+import { Route as HomeProtectedUserRouteRouteImport } from './routes/_home/_protected/user/route'
+import { Route as HomeProtectedUserIndexRouteImport } from './routes/_home/_protected/user/index'
+import { Route as HomeProtectedOrdersIndexRouteImport } from './routes/_home/_protected/orders/index'
+import { Route as HomeProtectedCheckoutIndexRouteImport } from './routes/_home/_protected/checkout/index'
+import { Route as HomeProtectedOrdersOrderIdRouteImport } from './routes/_home/_protected/orders/$orderId'
+import { Route as HomeProtectedUserUpdateProfileIndexRouteImport } from './routes/_home/_protected/user/update-profile/index'
+import { Route as HomeProtectedUserOrdersIndexRouteImport } from './routes/_home/_protected/user/orders/index'
+import { Route as HomeProtectedUserDashboardIndexRouteImport } from './routes/_home/_protected/user/dashboard/index'
+import { Route as HomeProtectedUserChangePasswordIndexRouteImport } from './routes/_home/_protected/user/change-password/index'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/_home',
@@ -42,15 +43,9 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeUserRouteRoute = HomeUserRouteRouteImport.update({
-  id: '/user',
-  path: '/user',
+const HomeProtectedRouteRoute = HomeProtectedRouteRouteImport.update({
+  id: '/_protected',
   getParentRoute: () => HomeRouteRoute,
-} as any)
-const HomeUserIndexRoute = HomeUserIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => HomeUserRouteRoute,
 } as any)
 const HomeSearchIndexRoute = HomeSearchIndexRouteImport.update({
   id: '/search/',
@@ -62,19 +57,9 @@ const HomeProductIndexRoute = HomeProductIndexRouteImport.update({
   path: '/product/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeOrdersIndexRoute = HomeOrdersIndexRouteImport.update({
-  id: '/orders/',
-  path: '/orders/',
-  getParentRoute: () => HomeRouteRoute,
-} as any)
 const HomeContactUsIndexRoute = HomeContactUsIndexRouteImport.update({
   id: '/contact-us/',
   path: '/contact-us/',
-  getParentRoute: () => HomeRouteRoute,
-} as any)
-const HomeCheckoutIndexRoute = HomeCheckoutIndexRouteImport.update({
-  id: '/checkout/',
-  path: '/checkout/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeAboutUsIndexRoute = HomeAboutUsIndexRouteImport.update({
@@ -97,108 +82,134 @@ const HomeProductProductIdRoute = HomeProductProductIdRouteImport.update({
   path: '/product/$productId',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeOrdersOrderIdRoute = HomeOrdersOrderIdRouteImport.update({
-  id: '/orders/$orderId',
-  path: '/orders/$orderId',
-  getParentRoute: () => HomeRouteRoute,
+const HomeProtectedUserRouteRoute = HomeProtectedUserRouteRouteImport.update({
+  id: '/user',
+  path: '/user',
+  getParentRoute: () => HomeProtectedRouteRoute,
 } as any)
-const HomeUserUpdateProfileIndexRoute =
-  HomeUserUpdateProfileIndexRouteImport.update({
+const HomeProtectedUserIndexRoute = HomeProtectedUserIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HomeProtectedUserRouteRoute,
+} as any)
+const HomeProtectedOrdersIndexRoute =
+  HomeProtectedOrdersIndexRouteImport.update({
+    id: '/orders/',
+    path: '/orders/',
+    getParentRoute: () => HomeProtectedRouteRoute,
+  } as any)
+const HomeProtectedCheckoutIndexRoute =
+  HomeProtectedCheckoutIndexRouteImport.update({
+    id: '/checkout/',
+    path: '/checkout/',
+    getParentRoute: () => HomeProtectedRouteRoute,
+  } as any)
+const HomeProtectedOrdersOrderIdRoute =
+  HomeProtectedOrdersOrderIdRouteImport.update({
+    id: '/orders/$orderId',
+    path: '/orders/$orderId',
+    getParentRoute: () => HomeProtectedRouteRoute,
+  } as any)
+const HomeProtectedUserUpdateProfileIndexRoute =
+  HomeProtectedUserUpdateProfileIndexRouteImport.update({
     id: '/update-profile/',
     path: '/update-profile/',
-    getParentRoute: () => HomeUserRouteRoute,
+    getParentRoute: () => HomeProtectedUserRouteRoute,
   } as any)
-const HomeUserOrdersIndexRoute = HomeUserOrdersIndexRouteImport.update({
-  id: '/orders/',
-  path: '/orders/',
-  getParentRoute: () => HomeUserRouteRoute,
-} as any)
-const HomeUserDashboardIndexRoute = HomeUserDashboardIndexRouteImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
-  getParentRoute: () => HomeUserRouteRoute,
-} as any)
-const HomeUserChangePasswordIndexRoute =
-  HomeUserChangePasswordIndexRouteImport.update({
+const HomeProtectedUserOrdersIndexRoute =
+  HomeProtectedUserOrdersIndexRouteImport.update({
+    id: '/orders/',
+    path: '/orders/',
+    getParentRoute: () => HomeProtectedUserRouteRoute,
+  } as any)
+const HomeProtectedUserDashboardIndexRoute =
+  HomeProtectedUserDashboardIndexRouteImport.update({
+    id: '/dashboard/',
+    path: '/dashboard/',
+    getParentRoute: () => HomeProtectedUserRouteRoute,
+  } as any)
+const HomeProtectedUserChangePasswordIndexRoute =
+  HomeProtectedUserChangePasswordIndexRouteImport.update({
     id: '/change-password/',
     path: '/change-password/',
-    getParentRoute: () => HomeUserRouteRoute,
+    getParentRoute: () => HomeProtectedUserRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof HomeIndexRoute
-  '/user': typeof HomeUserRouteRouteWithChildren
-  '/orders/$orderId': typeof HomeOrdersOrderIdRoute
+  '/user': typeof HomeProtectedUserRouteRouteWithChildren
   '/product/$productId': typeof HomeProductProductIdRoute
   '/login/': typeof AuthLoginIndexRoute
   '/register/': typeof AuthRegisterIndexRoute
   '/about-us/': typeof HomeAboutUsIndexRoute
-  '/checkout/': typeof HomeCheckoutIndexRoute
   '/contact-us/': typeof HomeContactUsIndexRoute
-  '/orders/': typeof HomeOrdersIndexRoute
   '/product/': typeof HomeProductIndexRoute
   '/search/': typeof HomeSearchIndexRoute
-  '/user/': typeof HomeUserIndexRoute
-  '/user/change-password/': typeof HomeUserChangePasswordIndexRoute
-  '/user/dashboard/': typeof HomeUserDashboardIndexRoute
-  '/user/orders/': typeof HomeUserOrdersIndexRoute
-  '/user/update-profile/': typeof HomeUserUpdateProfileIndexRoute
+  '/orders/$orderId': typeof HomeProtectedOrdersOrderIdRoute
+  '/checkout/': typeof HomeProtectedCheckoutIndexRoute
+  '/orders/': typeof HomeProtectedOrdersIndexRoute
+  '/user/': typeof HomeProtectedUserIndexRoute
+  '/user/change-password/': typeof HomeProtectedUserChangePasswordIndexRoute
+  '/user/dashboard/': typeof HomeProtectedUserDashboardIndexRoute
+  '/user/orders/': typeof HomeProtectedUserOrdersIndexRoute
+  '/user/update-profile/': typeof HomeProtectedUserUpdateProfileIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof HomeIndexRoute
-  '/orders/$orderId': typeof HomeOrdersOrderIdRoute
   '/product/$productId': typeof HomeProductProductIdRoute
   '/login': typeof AuthLoginIndexRoute
   '/register': typeof AuthRegisterIndexRoute
   '/about-us': typeof HomeAboutUsIndexRoute
-  '/checkout': typeof HomeCheckoutIndexRoute
   '/contact-us': typeof HomeContactUsIndexRoute
-  '/orders': typeof HomeOrdersIndexRoute
   '/product': typeof HomeProductIndexRoute
   '/search': typeof HomeSearchIndexRoute
-  '/user': typeof HomeUserIndexRoute
-  '/user/change-password': typeof HomeUserChangePasswordIndexRoute
-  '/user/dashboard': typeof HomeUserDashboardIndexRoute
-  '/user/orders': typeof HomeUserOrdersIndexRoute
-  '/user/update-profile': typeof HomeUserUpdateProfileIndexRoute
+  '/orders/$orderId': typeof HomeProtectedOrdersOrderIdRoute
+  '/checkout': typeof HomeProtectedCheckoutIndexRoute
+  '/orders': typeof HomeProtectedOrdersIndexRoute
+  '/user': typeof HomeProtectedUserIndexRoute
+  '/user/change-password': typeof HomeProtectedUserChangePasswordIndexRoute
+  '/user/dashboard': typeof HomeProtectedUserDashboardIndexRoute
+  '/user/orders': typeof HomeProtectedUserOrdersIndexRoute
+  '/user/update-profile': typeof HomeProtectedUserUpdateProfileIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_auth': typeof AuthRouteRouteWithChildren
   '/_home': typeof HomeRouteRouteWithChildren
-  '/_home/user': typeof HomeUserRouteRouteWithChildren
+  '/_home/_protected': typeof HomeProtectedRouteRouteWithChildren
   '/_home/': typeof HomeIndexRoute
-  '/_home/orders/$orderId': typeof HomeOrdersOrderIdRoute
+  '/_home/_protected/user': typeof HomeProtectedUserRouteRouteWithChildren
   '/_home/product/$productId': typeof HomeProductProductIdRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
   '/_auth/register/': typeof AuthRegisterIndexRoute
   '/_home/about-us/': typeof HomeAboutUsIndexRoute
-  '/_home/checkout/': typeof HomeCheckoutIndexRoute
   '/_home/contact-us/': typeof HomeContactUsIndexRoute
-  '/_home/orders/': typeof HomeOrdersIndexRoute
   '/_home/product/': typeof HomeProductIndexRoute
   '/_home/search/': typeof HomeSearchIndexRoute
-  '/_home/user/': typeof HomeUserIndexRoute
-  '/_home/user/change-password/': typeof HomeUserChangePasswordIndexRoute
-  '/_home/user/dashboard/': typeof HomeUserDashboardIndexRoute
-  '/_home/user/orders/': typeof HomeUserOrdersIndexRoute
-  '/_home/user/update-profile/': typeof HomeUserUpdateProfileIndexRoute
+  '/_home/_protected/orders/$orderId': typeof HomeProtectedOrdersOrderIdRoute
+  '/_home/_protected/checkout/': typeof HomeProtectedCheckoutIndexRoute
+  '/_home/_protected/orders/': typeof HomeProtectedOrdersIndexRoute
+  '/_home/_protected/user/': typeof HomeProtectedUserIndexRoute
+  '/_home/_protected/user/change-password/': typeof HomeProtectedUserChangePasswordIndexRoute
+  '/_home/_protected/user/dashboard/': typeof HomeProtectedUserDashboardIndexRoute
+  '/_home/_protected/user/orders/': typeof HomeProtectedUserOrdersIndexRoute
+  '/_home/_protected/user/update-profile/': typeof HomeProtectedUserUpdateProfileIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/user'
-    | '/orders/$orderId'
     | '/product/$productId'
     | '/login/'
     | '/register/'
     | '/about-us/'
-    | '/checkout/'
     | '/contact-us/'
-    | '/orders/'
     | '/product/'
     | '/search/'
+    | '/orders/$orderId'
+    | '/checkout/'
+    | '/orders/'
     | '/user/'
     | '/user/change-password/'
     | '/user/dashboard/'
@@ -207,16 +218,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/orders/$orderId'
     | '/product/$productId'
     | '/login'
     | '/register'
     | '/about-us'
-    | '/checkout'
     | '/contact-us'
-    | '/orders'
     | '/product'
     | '/search'
+    | '/orders/$orderId'
+    | '/checkout'
+    | '/orders'
     | '/user'
     | '/user/change-password'
     | '/user/dashboard'
@@ -226,23 +237,24 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_auth'
     | '/_home'
-    | '/_home/user'
+    | '/_home/_protected'
     | '/_home/'
-    | '/_home/orders/$orderId'
+    | '/_home/_protected/user'
     | '/_home/product/$productId'
     | '/_auth/login/'
     | '/_auth/register/'
     | '/_home/about-us/'
-    | '/_home/checkout/'
     | '/_home/contact-us/'
-    | '/_home/orders/'
     | '/_home/product/'
     | '/_home/search/'
-    | '/_home/user/'
-    | '/_home/user/change-password/'
-    | '/_home/user/dashboard/'
-    | '/_home/user/orders/'
-    | '/_home/user/update-profile/'
+    | '/_home/_protected/orders/$orderId'
+    | '/_home/_protected/checkout/'
+    | '/_home/_protected/orders/'
+    | '/_home/_protected/user/'
+    | '/_home/_protected/user/change-password/'
+    | '/_home/_protected/user/dashboard/'
+    | '/_home/_protected/user/orders/'
+    | '/_home/_protected/user/update-profile/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -273,19 +285,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/user': {
-      id: '/_home/user'
-      path: '/user'
-      fullPath: '/user'
-      preLoaderRoute: typeof HomeUserRouteRouteImport
+    '/_home/_protected': {
+      id: '/_home/_protected'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof HomeProtectedRouteRouteImport
       parentRoute: typeof HomeRouteRoute
-    }
-    '/_home/user/': {
-      id: '/_home/user/'
-      path: '/'
-      fullPath: '/user/'
-      preLoaderRoute: typeof HomeUserIndexRouteImport
-      parentRoute: typeof HomeUserRouteRoute
     }
     '/_home/search/': {
       id: '/_home/search/'
@@ -301,25 +306,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeProductIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/orders/': {
-      id: '/_home/orders/'
-      path: '/orders'
-      fullPath: '/orders/'
-      preLoaderRoute: typeof HomeOrdersIndexRouteImport
-      parentRoute: typeof HomeRouteRoute
-    }
     '/_home/contact-us/': {
       id: '/_home/contact-us/'
       path: '/contact-us'
       fullPath: '/contact-us/'
       preLoaderRoute: typeof HomeContactUsIndexRouteImport
-      parentRoute: typeof HomeRouteRoute
-    }
-    '/_home/checkout/': {
-      id: '/_home/checkout/'
-      path: '/checkout'
-      fullPath: '/checkout/'
-      preLoaderRoute: typeof HomeCheckoutIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
     '/_home/about-us/': {
@@ -350,40 +341,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeProductProductIdRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/orders/$orderId': {
-      id: '/_home/orders/$orderId'
+    '/_home/_protected/user': {
+      id: '/_home/_protected/user'
+      path: '/user'
+      fullPath: '/user'
+      preLoaderRoute: typeof HomeProtectedUserRouteRouteImport
+      parentRoute: typeof HomeProtectedRouteRoute
+    }
+    '/_home/_protected/user/': {
+      id: '/_home/_protected/user/'
+      path: '/'
+      fullPath: '/user/'
+      preLoaderRoute: typeof HomeProtectedUserIndexRouteImport
+      parentRoute: typeof HomeProtectedUserRouteRoute
+    }
+    '/_home/_protected/orders/': {
+      id: '/_home/_protected/orders/'
+      path: '/orders'
+      fullPath: '/orders/'
+      preLoaderRoute: typeof HomeProtectedOrdersIndexRouteImport
+      parentRoute: typeof HomeProtectedRouteRoute
+    }
+    '/_home/_protected/checkout/': {
+      id: '/_home/_protected/checkout/'
+      path: '/checkout'
+      fullPath: '/checkout/'
+      preLoaderRoute: typeof HomeProtectedCheckoutIndexRouteImport
+      parentRoute: typeof HomeProtectedRouteRoute
+    }
+    '/_home/_protected/orders/$orderId': {
+      id: '/_home/_protected/orders/$orderId'
       path: '/orders/$orderId'
       fullPath: '/orders/$orderId'
-      preLoaderRoute: typeof HomeOrdersOrderIdRouteImport
-      parentRoute: typeof HomeRouteRoute
+      preLoaderRoute: typeof HomeProtectedOrdersOrderIdRouteImport
+      parentRoute: typeof HomeProtectedRouteRoute
     }
-    '/_home/user/update-profile/': {
-      id: '/_home/user/update-profile/'
+    '/_home/_protected/user/update-profile/': {
+      id: '/_home/_protected/user/update-profile/'
       path: '/update-profile'
       fullPath: '/user/update-profile/'
-      preLoaderRoute: typeof HomeUserUpdateProfileIndexRouteImport
-      parentRoute: typeof HomeUserRouteRoute
+      preLoaderRoute: typeof HomeProtectedUserUpdateProfileIndexRouteImport
+      parentRoute: typeof HomeProtectedUserRouteRoute
     }
-    '/_home/user/orders/': {
-      id: '/_home/user/orders/'
+    '/_home/_protected/user/orders/': {
+      id: '/_home/_protected/user/orders/'
       path: '/orders'
       fullPath: '/user/orders/'
-      preLoaderRoute: typeof HomeUserOrdersIndexRouteImport
-      parentRoute: typeof HomeUserRouteRoute
+      preLoaderRoute: typeof HomeProtectedUserOrdersIndexRouteImport
+      parentRoute: typeof HomeProtectedUserRouteRoute
     }
-    '/_home/user/dashboard/': {
-      id: '/_home/user/dashboard/'
+    '/_home/_protected/user/dashboard/': {
+      id: '/_home/_protected/user/dashboard/'
       path: '/dashboard'
       fullPath: '/user/dashboard/'
-      preLoaderRoute: typeof HomeUserDashboardIndexRouteImport
-      parentRoute: typeof HomeUserRouteRoute
+      preLoaderRoute: typeof HomeProtectedUserDashboardIndexRouteImport
+      parentRoute: typeof HomeProtectedUserRouteRoute
     }
-    '/_home/user/change-password/': {
-      id: '/_home/user/change-password/'
+    '/_home/_protected/user/change-password/': {
+      id: '/_home/_protected/user/change-password/'
       path: '/change-password'
       fullPath: '/user/change-password/'
-      preLoaderRoute: typeof HomeUserChangePasswordIndexRouteImport
-      parentRoute: typeof HomeUserRouteRoute
+      preLoaderRoute: typeof HomeProtectedUserChangePasswordIndexRouteImport
+      parentRoute: typeof HomeProtectedUserRouteRoute
     }
   }
 }
@@ -402,48 +421,63 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
 )
 
-interface HomeUserRouteRouteChildren {
-  HomeUserIndexRoute: typeof HomeUserIndexRoute
-  HomeUserChangePasswordIndexRoute: typeof HomeUserChangePasswordIndexRoute
-  HomeUserDashboardIndexRoute: typeof HomeUserDashboardIndexRoute
-  HomeUserOrdersIndexRoute: typeof HomeUserOrdersIndexRoute
-  HomeUserUpdateProfileIndexRoute: typeof HomeUserUpdateProfileIndexRoute
+interface HomeProtectedUserRouteRouteChildren {
+  HomeProtectedUserIndexRoute: typeof HomeProtectedUserIndexRoute
+  HomeProtectedUserChangePasswordIndexRoute: typeof HomeProtectedUserChangePasswordIndexRoute
+  HomeProtectedUserDashboardIndexRoute: typeof HomeProtectedUserDashboardIndexRoute
+  HomeProtectedUserOrdersIndexRoute: typeof HomeProtectedUserOrdersIndexRoute
+  HomeProtectedUserUpdateProfileIndexRoute: typeof HomeProtectedUserUpdateProfileIndexRoute
 }
 
-const HomeUserRouteRouteChildren: HomeUserRouteRouteChildren = {
-  HomeUserIndexRoute: HomeUserIndexRoute,
-  HomeUserChangePasswordIndexRoute: HomeUserChangePasswordIndexRoute,
-  HomeUserDashboardIndexRoute: HomeUserDashboardIndexRoute,
-  HomeUserOrdersIndexRoute: HomeUserOrdersIndexRoute,
-  HomeUserUpdateProfileIndexRoute: HomeUserUpdateProfileIndexRoute,
+const HomeProtectedUserRouteRouteChildren: HomeProtectedUserRouteRouteChildren =
+  {
+    HomeProtectedUserIndexRoute: HomeProtectedUserIndexRoute,
+    HomeProtectedUserChangePasswordIndexRoute:
+      HomeProtectedUserChangePasswordIndexRoute,
+    HomeProtectedUserDashboardIndexRoute: HomeProtectedUserDashboardIndexRoute,
+    HomeProtectedUserOrdersIndexRoute: HomeProtectedUserOrdersIndexRoute,
+    HomeProtectedUserUpdateProfileIndexRoute:
+      HomeProtectedUserUpdateProfileIndexRoute,
+  }
+
+const HomeProtectedUserRouteRouteWithChildren =
+  HomeProtectedUserRouteRoute._addFileChildren(
+    HomeProtectedUserRouteRouteChildren,
+  )
+
+interface HomeProtectedRouteRouteChildren {
+  HomeProtectedUserRouteRoute: typeof HomeProtectedUserRouteRouteWithChildren
+  HomeProtectedOrdersOrderIdRoute: typeof HomeProtectedOrdersOrderIdRoute
+  HomeProtectedCheckoutIndexRoute: typeof HomeProtectedCheckoutIndexRoute
+  HomeProtectedOrdersIndexRoute: typeof HomeProtectedOrdersIndexRoute
 }
 
-const HomeUserRouteRouteWithChildren = HomeUserRouteRoute._addFileChildren(
-  HomeUserRouteRouteChildren,
-)
+const HomeProtectedRouteRouteChildren: HomeProtectedRouteRouteChildren = {
+  HomeProtectedUserRouteRoute: HomeProtectedUserRouteRouteWithChildren,
+  HomeProtectedOrdersOrderIdRoute: HomeProtectedOrdersOrderIdRoute,
+  HomeProtectedCheckoutIndexRoute: HomeProtectedCheckoutIndexRoute,
+  HomeProtectedOrdersIndexRoute: HomeProtectedOrdersIndexRoute,
+}
+
+const HomeProtectedRouteRouteWithChildren =
+  HomeProtectedRouteRoute._addFileChildren(HomeProtectedRouteRouteChildren)
 
 interface HomeRouteRouteChildren {
-  HomeUserRouteRoute: typeof HomeUserRouteRouteWithChildren
+  HomeProtectedRouteRoute: typeof HomeProtectedRouteRouteWithChildren
   HomeIndexRoute: typeof HomeIndexRoute
-  HomeOrdersOrderIdRoute: typeof HomeOrdersOrderIdRoute
   HomeProductProductIdRoute: typeof HomeProductProductIdRoute
   HomeAboutUsIndexRoute: typeof HomeAboutUsIndexRoute
-  HomeCheckoutIndexRoute: typeof HomeCheckoutIndexRoute
   HomeContactUsIndexRoute: typeof HomeContactUsIndexRoute
-  HomeOrdersIndexRoute: typeof HomeOrdersIndexRoute
   HomeProductIndexRoute: typeof HomeProductIndexRoute
   HomeSearchIndexRoute: typeof HomeSearchIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
-  HomeUserRouteRoute: HomeUserRouteRouteWithChildren,
+  HomeProtectedRouteRoute: HomeProtectedRouteRouteWithChildren,
   HomeIndexRoute: HomeIndexRoute,
-  HomeOrdersOrderIdRoute: HomeOrdersOrderIdRoute,
   HomeProductProductIdRoute: HomeProductProductIdRoute,
   HomeAboutUsIndexRoute: HomeAboutUsIndexRoute,
-  HomeCheckoutIndexRoute: HomeCheckoutIndexRoute,
   HomeContactUsIndexRoute: HomeContactUsIndexRoute,
-  HomeOrdersIndexRoute: HomeOrdersIndexRoute,
   HomeProductIndexRoute: HomeProductIndexRoute,
   HomeSearchIndexRoute: HomeSearchIndexRoute,
 }
