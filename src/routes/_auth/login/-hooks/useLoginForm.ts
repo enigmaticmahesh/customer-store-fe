@@ -5,13 +5,15 @@ import { toast } from "sonner"
 // import { useRegisterUser } from "../-queries/register-user.query"
 import { apiErrorMsg } from "@/app-utils/error-utils"
 import { useNavigate } from "@tanstack/react-router"
-import type { LoginFormData } from "../-login.interface"
+import type { LoginFormData, LoginResponse } from "../-login.interface"
 import { InitialFormData, loginFormSchema } from "../-login.schema"
 import { useLoginUser } from "../-queries/login-user.query"
+import { useTokensStore } from "@/stores/app-tokens.store"
 
 const useLoginForm = () => {
   const navigate = useNavigate()
-  const {mutate: loginUser, isPending} = useLoginUser()
+  const { mutate: loginUser, isPending } = useLoginUser()
+  const updateStore =  useTokensStore(state => state.updateStore)
 
   const handleSubmit = (data: LoginFormData) => {
     loginUser(data, {
@@ -19,7 +21,8 @@ const useLoginForm = () => {
         const msg = apiErrorMsg(err, 'Failed to login. Please, try again.')
         toast.error(msg)
       },
-      onSuccess: () => {
+      onSuccess: (res: LoginResponse) => {
+        updateStore({...res.data})
         toast.success('Congratulations! You are successfully logged in. Enjoy shopping!!!')
         navigate({ to: '/user/dashboard', viewTransition: true })
       }

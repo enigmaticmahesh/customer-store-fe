@@ -1,10 +1,10 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/_home/user/')({
+export const Route = createFileRoute('/_home/_protected/orders/')({
     beforeLoad: () => {
         throw redirect({
-            to: '/user/dashboard',
+            to: '/user/orders',
             viewTransition: true
         })
-    },
+    }
 })
