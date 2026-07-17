@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { product } from "./-temp.data";
+// import { product } from "./-temp.data";
 import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import ProductStock from "@/components/custom/product-stock.component";
 import Rating from "@/components/custom/product-rating.component";
@@ -18,10 +18,16 @@ import {
 } from "lucide-react";
 import { formatPriceString } from "@/app-utils/string-utils";
 import ProductReviews from "./-component/product-reviews.component";
+import { Route } from "./$productId";
+import { useProductDetails } from "./-queries/get-product-details.query";
+import { getImgUrl } from "@/app-utils/img-utils";
 
 const ProductDetails = () => {
+  const { productId } = Route.useParams();
+  const {data} = useProductDetails(productId);
+  const product = data?.data;
   const stockUi = () => {
-    const stock = product?.stock;
+    const stock = Number(product?.qty);
     if (!stock) return null;
 
     const stockClass = stock <= 0 ? "relative py-1 mb-2" : "relative";
@@ -89,12 +95,14 @@ const ProductDetails = () => {
                     className="aspect-square w-full rounded-xl bg-muted object-cover"
                   />
                 )} */}
-              <ImageWithFallback
-                src={product?.image?.[0]}
-                width={500}
-                height={500}
-                className="aspect-square w-full rounded-xl bg-muted object-cover"
-              />
+                {product?.sku && product?.id && (
+                  <ImageWithFallback
+                    src={getImgUrl(product.sku, product.id, 1)}
+                    width={500}
+                    height={500}
+                    className="aspect-square w-full rounded-xl bg-muted object-cover"
+                  />
+                )}
             </div>
 
             {/* {product?.image?.length > 1 && (
@@ -138,22 +146,22 @@ const ProductDetails = () => {
               </div>
               <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold  text-foreground">
                 {/* {showingTranslateValue(product?.title)} */}
-                {product.title.en}
+                {product?.name}
               </h1>
               <div className="flex gap-0.5 items-center mt-1">
                 <Rating
                   size="md"
                   showReviews={true}
-                  rating={product?.average_rating}
-                  totalReviews={product?.total_reviews}
+                  // rating={product?.average_rating}
+                  // totalReviews={product?.total_reviews}
                 />
               </div>
             </div>
             <div className="flex items-center mb-8">
               <Price
-                price={product.prices.price}
+                price={Number(product?.price)}
                 //   product={product}
-                originalPrice={product.prices.originalPrice}
+                originalPrice={Number(product?.mrp)}
                 //   campaign={isInCampaign ? campaign : null}
               />
               {/* <span className="ml-2 block">
@@ -463,7 +471,7 @@ const ProductDetails = () => {
               <TabsContent value="description">
                 <h3 className="sr-only">Description</h3>
                 <p className="text-sm leading-6 text-muted-foreground md:leading-6 mb-3">
-                  {product.description.en}
+                  {product?.name}
                 </p>
                 <div className="text-sm text-muted-foreground [&_h4]:mt-5 [&_h4]:font-medium [&_h4]:text-foreground [&_li]:pl-2 [&_li::marker]:text-muted-foreground [&_p]:my-2 [&_p]:text-sm/6 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5 [&_ul]:text-sm/6 *:first:mt-0" />
               </TabsContent>
