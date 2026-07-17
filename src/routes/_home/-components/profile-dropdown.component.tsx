@@ -1,5 +1,8 @@
-import { getInitials, isValidImageUrl } from "@/app-utils/string-utils";
-import ImageWithFallback from "@/components/custom/image-with-fallback.component";
+import { getInitials } from "@/app-utils/string-utils";
+// import ImageWithFallback from "@/components/custom/image-with-fallback.component";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuthUserStore } from "@/stores/app-auth-user.store";
+import { useTokensStore } from "@/stores/app-tokens.store";
 import { Link } from "@tanstack/react-router";
 import {
   // Bell,
@@ -11,18 +14,6 @@ import {
   User,
   UserCircle,
 } from "lucide-react";
-
-const userInfo = {
-  name: "Justin J. Ruiz",
-  email: "justin@gmail.com",
-  image: "https://images.pexels.com/photos/5254256/pexels-photo-5254256.jpeg",
-  id: "6439713c1d8869133e8881e9",
-  phone: "212-512-2888",
-  token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDM5NzEzYzFkODg2OTEzM2U4ODgxZTkiLCJuYW1lIjoiSnVzdGluIEouIFJ1aXoiLCJlbWFpbCI6Imp1c3RpbkBnbWFpbC5jb20iLCJwaG9uZSI6IjIxMi01MTItMjg4OCIsImltYWdlIjoiaHR0cHM6Ly9pbWFnZXMucGV4ZWxzLmNvbS9waG90b3MvNTI1NDI1Ni9wZXhlbHMtcGhvdG8tNTI1NDI1Ni5qcGVnIiwiaWF0IjoxNzgxNTM3ODE1LCJleHAiOjE3ODE1Mzk2MTV9.weV9J0k-4vG2jLtTN9nBJr6INXz5e5txNA3OZOfLINc",
-  refreshToken:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzk3MTNjMWQ4ODY5MTMzZTg4ODFlOSIsImlhdCI6MTc4MTQyMDU5NiwiZXhwIjoxNzgyMDI1Mzk2fQ.5I_EwQD-y5f5uVnzZkixGV1Qh2MSMz3DGXF1ZDIvNSI",
-};
 
 const accountMenuItems = [
   { name: "Dashboard", href: "/user/dashboard", Icon: Grid2x2 },
@@ -43,7 +34,18 @@ const accountMenuItems = [
 ];
 
 const ProfileDropdown = () => {
-  if (!userInfo?.email) {
+  const userEmail = useAuthUserStore(state => state.email)
+  const userName = useAuthUserStore(state => state.fullName)
+  const userImage = ""
+  // const userImage = "https://images.pexels.com/photos/5254256/pexels-photo-5254256.jpeg"
+
+  const logOut = () => {
+    useTokensStore.getState().resetStore();
+    useAuthUserStore.getState().resetStore();
+    window.location.replace(window.location.origin);
+  }
+
+  if (!userEmail) {
     return (
       <Link
         to="/login"
@@ -57,43 +59,54 @@ const ProfileDropdown = () => {
   }
 
   const userImgUi = (trigger: boolean = true) => {
-    const hasValidImage = isValidImageUrl(userInfo?.image);
-    if (!trigger) {
-      if (hasValidImage) {
-        return (
-          <ImageWithFallback
-            src={userInfo.image}
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-full object-cover ring-2 ring-white"
-            alt={userInfo?.name || "User"}
-          />
-        );
-      }
+    // const hasValidImage = isValidImageUrl(userImage);
+    // if (!trigger) {
+    //   if (hasValidImage) {
+    //     return (
+    //       <ImageWithFallback
+    //         src={userImage}
+    //         width={36}
+    //         height={36}
+    //         className="h-9 w-9 rounded-full object-cover ring-2 ring-white"
+    //         alt={userName || "User"}
+    //       />
+    //     );
+    //   }
 
-      return (
-        <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-          <User className="h-5 w-5 text-primary" />
-        </div>
-      );
-    }
+    //   return (
+    //     <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+    //       <User className="h-5 w-5 text-primary" />
+    //     </div>
+    //   );
+    // }
 
-    if (hasValidImage) {
-      return (
-        <ImageWithFallback
-          src={userInfo.image}
-          width={32}
-          height={32}
-          className="h-8 w-8 rounded-full bg-muted object-cover ring-2 ring-white"
-          alt={getInitials(userInfo.name)}
-        />
-      );
-    }
+    // if (hasValidImage) {
+    //   return (
+    //     <ImageWithFallback
+    //       src={userImage}
+    //       width={32}
+    //       height={32}
+    //       className="h-8 w-8 rounded-full bg-muted object-cover ring-2 ring-white"
+    //       alt={getInitials(userName)}
+    //     />
+    //   );
+    // }
+    // return (
+    //   <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-xl font-bold text-center">
+    //     <Avatar>
+    //       <AvatarImage src={userImage} />
+    //       <AvatarFallback>{getInitials(userName)}</AvatarFallback>
+    //     </Avatar>
+    //   </div>
+    // );
+
+
     return (
-      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-xl font-bold text-center">
-        {getInitials(userInfo.name)}
-      </div>
-    );
+      <Avatar data-test={trigger}>
+        <AvatarImage src={userImage} />
+        <AvatarFallback>{getInitials(userName)}</AvatarFallback>
+      </Avatar>
+    )
   };
 
   const accItemsUi = accountMenuItems.map(({ name, href, Icon }) => (
@@ -107,6 +120,7 @@ const ProfileDropdown = () => {
       {name}
     </Link>
   ));
+
   return (
     <div className="relative group">
       {/* Trigger */}
@@ -116,9 +130,9 @@ const ProfileDropdown = () => {
       </button>
 
       {/* Hover dropdown panel */}
-      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full mt-2 z-50 w-64 transition-all duration-200 ease-in-out">
+      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute -right-2 top-full mt-2 z-50 w-64 transition-all duration-200 ease-in-out">
         {/* Triangle arrow */}
-        <div className="absolute -top-2 right-6 h-4 w-4 rotate-45 bg-white dark:bg-gray-800 z-10" />
+        <div className="absolute -top-2 right-4 h-4 w-4 rotate-45 bg-white dark:bg-gray-800 z-10" />
 
         {/* Panel */}
         <div className="relative z-20 overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg">
@@ -127,10 +141,10 @@ const ProfileDropdown = () => {
             {userImgUi(false)}
             <div className="min-w-0">
               <div className="text-sm font-semibold text-gray-900 dark:text-white truncate">
-                {userInfo?.name || "User"}
+                {userName || "User"}
               </div>
               <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                {userInfo?.email}
+                {userEmail}
               </div>
             </div>
           </div>
@@ -141,7 +155,7 @@ const ProfileDropdown = () => {
           {/* Sign out */}
           <div className="border-t border-gray-100 dark:border-gray-700 py-1.5">
             <button
-              //   onClick={() => signOut({ callbackUrl: "/" })}
+              onClick={logOut}
               className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors"
             >
               <LogOut className="h-4.5 w-4.5 text-gray-400 dark:text-gray-500 shrink-0" />
