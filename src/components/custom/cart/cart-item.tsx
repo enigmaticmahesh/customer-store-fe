@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import ImageWithFallback from "../image-with-fallback.component";
-import { formatPriceString } from "@/app-utils/string-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import useCart from "@/stores/cart.store";
+import useCart from "@/core/stores/cart.store";
 import useCartItem from "./useCartItem.hook";
 
 const CartItem = ({ itemId }: { itemId: string }) => {

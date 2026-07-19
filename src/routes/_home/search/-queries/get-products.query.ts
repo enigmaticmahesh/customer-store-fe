@@ -3,7 +3,7 @@
 // import { DefaultPaginatedProdsData } from "../-products.schema"
 // import { toast } from "sonner"
 // import useProdsListStore from "../-stores/prods-list.store"
-// import { apiErrorMsg } from "@/app-utils/error-utils"
+// import { apiErrorMsg } from "@/core/app-utils/error-utils"
 
 import { useQuery } from "@tanstack/react-query";
 import SearchService from "../-search.service";

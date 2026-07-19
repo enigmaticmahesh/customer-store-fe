@@ -1,4 +1,4 @@
-import { formatPriceString } from "@/app-utils/string-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 
 type PropsType = {
   product: any;

@@ -1,8 +1,8 @@
 import { APP_ENV_CONFIG } from "@/configs/env.config";
-import { useTokensStore } from "@/stores/app-tokens.store";
+import { useTokensStore } from "@/core/stores/app-tokens.store";
 import ky from "ky";
 import type { ApiResponse } from "./api.interface";
-import type { AuthTokens } from "@/interfaces/app-auth.interface";
+import type { AuthTokens } from "@/core/interfaces/app-auth.interface";
 
 /*
     NOTE:

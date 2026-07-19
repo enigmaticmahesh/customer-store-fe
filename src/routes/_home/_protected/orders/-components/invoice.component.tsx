@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
-import { getReadableDate } from '@/app-utils/date-utils'
-import { formatPriceString } from '@/app-utils/string-utils'
+import { getReadableDate } from '@/core/app-utils/date-utils'
+import { formatPriceString } from '@/core/app-utils/string-utils'
 import darkLogo from '@/assets/logo/logo-dark.svg'
 import { orderDetails as data, globalSetting } from '../-temp.data'
 import InvoiceOrderTableBody from './invoice-order-table.component'

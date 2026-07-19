@@ -1,4 +1,4 @@
-import type { AppAuthData, AuthTokens } from "@/interfaces/app-auth.interface";
+import type { AppAuthData, AuthTokens } from "@/core/interfaces/app-auth.interface";
 
 export const EmptyAuthUserData: AppAuthData = {
     id: '',

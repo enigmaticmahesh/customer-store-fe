@@ -3,12 +3,12 @@ import { toast } from "sonner"
 // import { InitialFormData, registerFormSchema } from "../-register.schemas"
 // import type { RegisterFormData } from "../-register.interface"
 // import { useRegisterUser } from "../-queries/register-user.query"
-import { apiErrorMsg } from "@/app-utils/error-utils"
+import { apiErrorMsg } from "@/core/app-utils/error-utils"
 import { useNavigate } from "@tanstack/react-router"
 import type { LoginFormData, LoginResponse } from "../-login.interface"
 import { InitialFormData, loginFormSchema } from "../-login.schema"
 import { useLoginUser } from "../-queries/login-user.query"
-import { useTokensStore } from "@/stores/app-tokens.store"
+import { useTokensStore } from "@/core/stores/app-tokens.store"
 
 const useLoginForm = () => {
   const navigate = useNavigate()

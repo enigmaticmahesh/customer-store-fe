@@ -1,5 +1,5 @@
-import type { Product } from "@/interfaces/app-global.interface";
-import useCart from "@/stores/cart.store";
+import type { Product } from "@/core/interfaces/app-global.interface";
+import useCart from "@/core/stores/cart.store";
 import { ShoppingBag } from "lucide-react";
 
 // const Item = ({ itemId }: { itemId: string }) => {

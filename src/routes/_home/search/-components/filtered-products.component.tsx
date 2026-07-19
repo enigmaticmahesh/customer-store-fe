@@ -3,7 +3,7 @@ import useSearchState from "../-stores/useSearch.store";
 import ProductsToolbar from "./products-toolbar.component";
 import ProductCard from "@/components/custom/product/product-card.component";
 import { useFetchProds } from "../-queries/get-products.query";
-import type { Product } from "@/interfaces/app-global.interface";
+import type { Product } from "@/core/interfaces/app-global.interface";
 import noResults from "@/assets/no-result.svg";
 
 const FilteredProducts = () => {

@@ -11,11 +11,11 @@ import Rating from "@/components/custom/product-rating.component";
 import Price from "@/components/custom/product-price.component";
 import { Eye, ShoppingBag } from "lucide-react";
 import { useStore, type StoreApi } from "zustand";
-import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
-import type { AtLeastOne, Product } from "@/interfaces/app-global.interface";
+import type { BaseProdStoreContract } from "@/core/interfaces/common-prod-list.interface";
+import type { AtLeastOne, Product } from "@/core/interfaces/app-global.interface";
 import DiscountBadge from "../discount-badge.component";
-import { getImgUrl } from "@/app-utils/img-utils";
-import useCart from "@/stores/cart.store";
+import { getImgUrl } from "@/core/app-utils/img-utils";
+import useCart from "@/core/stores/cart.store";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
   quickViewProd: Product | null;

@@ -1,6 +1,6 @@
 import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import { CART_EVENTS } from "@/configs/event.config";
-import useCart from "@/stores/cart.store";
+import useCart from "@/core/stores/cart.store";
 import { Link } from "@tanstack/react-router";
 import { Home, ShoppingCart, TextAlignStart, User } from "lucide-react";
 
