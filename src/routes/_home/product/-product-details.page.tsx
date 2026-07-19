@@ -16,11 +16,11 @@ import {
   Sun,
   Truck,
 } from "lucide-react";
-import { formatPriceString } from "@/app-utils/string-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 import ProductReviews from "./-component/product-reviews.component";
 import { Route } from "./$productId";
 import { useProductDetails } from "./-queries/get-product-details.query";
-import { getImgUrl } from "@/app-utils/img-utils";
+import { getImgUrl } from "@/core/app-utils/img-utils";
 
 const ProductDetails = () => {
   const { productId } = Route.useParams();

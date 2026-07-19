@@ -5,11 +5,11 @@ import Rating from "../product-rating.component";
 import Price from "../product-price.component";
 import AddToCartBtn from "../cart/add-to-cart-btn.component";
 import { useStore, type StoreApi } from "zustand";
-import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
-import type { AtLeastOne, Product } from "@/interfaces/app-global.interface";
+import type { BaseProdStoreContract } from "@/core/interfaces/common-prod-list.interface";
+import type { AtLeastOne, Product } from "@/core/interfaces/app-global.interface";
 import DiscountBadge from "../discount-badge.component";
 import DiscountedPrice from "../discounted-price.component";
-import { getImgUrl } from "@/app-utils/img-utils";
+import { getImgUrl } from "@/core/app-utils/img-utils";
 
 type ProductCardProps = {
   product: Product;

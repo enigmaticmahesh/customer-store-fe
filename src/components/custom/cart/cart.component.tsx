@@ -2,9 +2,9 @@ import { ShoppingCart, X } from "lucide-react";
 import ImageWithFallback from "../image-with-fallback.component";
 import NoResult from "@/assets/no-result.svg";
 import { useNavigate } from "@tanstack/react-router";
-import { formatPriceString } from "@/app-utils/string-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 import { CART_EVENTS } from "@/configs/event.config";
-import useCart from "@/stores/cart.store";
+import useCart from "@/core/stores/cart.store";
 import CartItem from "./cart-item";
 import { toast } from "sonner";
 

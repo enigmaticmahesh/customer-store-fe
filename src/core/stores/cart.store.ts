@@ -1,10 +1,10 @@
-import { getImgUrl } from "@/app-utils/img-utils";
+import { getImgUrl } from "@/core/app-utils/img-utils";
 import { customSuccessToast } from "@/components/custom/custom-toasts";
 import type {
   CartItem,
   CartState,
   CartStore,
-} from "@/interfaces/app-cart.interface";
+} from "@/core/interfaces/app-cart.interface";
 import { toast } from "sonner";
 import { create } from "zustand";
 

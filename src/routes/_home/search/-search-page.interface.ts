@@ -1,5 +1,5 @@
-import type { Product } from "@/interfaces/app-global.interface";
-import type { ProdListSkeletonStateType } from "@/interfaces/common-prod-list.interface";
+import type { Product } from "@/core/interfaces/app-global.interface";
+import type { ProdListSkeletonStateType } from "@/core/interfaces/common-prod-list.interface";
 import type { TopCat } from "./-temp-data";
 
 export type FilterSections = {

@@ -1,7 +1,7 @@
 import { api } from "@/api/api-client";
 import type { ApiResponse } from "@/api/api.interface";
-import type { AppAuthData, AuthStore, AuthUser } from "@/interfaces/app-auth.interface";
-import { EmptyAuthUserData } from "@/schemas/app-auth.schema";
+import type { AppAuthData, AuthStore, AuthUser } from "@/core/interfaces/app-auth.interface";
+import { EmptyAuthUserData } from "@/core/schemas/app-auth.schema";
 import { create } from "zustand";
 
 export const useAuthUserStore = create<AuthStore>((set, get) => ({
