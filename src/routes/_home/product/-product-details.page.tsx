@@ -1,8 +1,8 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 // import { product } from "./-temp.data";
 import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import ProductStock from "@/components/custom/product-stock.component";
-import Rating from "@/components/custom/product-rating.component";
+// import Rating from "@/components/custom/product-rating.component";
 import Price from "@/components/custom/product-price.component";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,16 +13,21 @@ import {
   Plus,
   Repeat,
   ShieldOff,
-  Sun,
+  // Sun,
   Truck,
 } from "lucide-react";
 import { formatPriceString } from "@/app-utils/string-utils";
-import ProductReviews from "./-component/product-reviews.component";
+// import ProductReviews from "./-component/product-reviews.component";
 import { Route } from "./$productId";
 import { useProductDetails } from "./-queries/get-product-details.query";
 import { getImgUrl } from "@/app-utils/img-utils";
+import { useState } from "react";
+import useCart from "@/stores/cart.store";
+import type { Product } from "@/interfaces/app-global.interface";
 
 const ProductDetails = () => {
+  const [qty, setQty] = useState(1);
+  const addToCart = useCart((state) => state.addToCart);
   const { productId } = Route.useParams();
   const {data} = useProductDetails(productId);
   const product = data?.data;
@@ -36,6 +41,17 @@ const ProductDetails = () => {
         <ProductStock stock={stock} />
       </div>
     );
+  };
+
+  const handleAddToCart = (product: Product) => {
+    addToCart(product, qty);
+  };
+
+  const handleInc = () => {
+    setQty((prev) => prev + 1);
+  };
+  const handleDec = () => {
+    setQty((prev) => Math.max(1, prev - 1)); // Prevent going below 1
   };
 
   return (
@@ -148,14 +164,14 @@ const ProductDetails = () => {
                 {/* {showingTranslateValue(product?.title)} */}
                 {product?.name}
               </h1>
-              <div className="flex gap-0.5 items-center mt-1">
+              {/* <div className="flex gap-0.5 items-center mt-1">
                 <Rating
                   size="md"
                   showReviews={true}
-                  // rating={product?.average_rating}
-                  // totalReviews={product?.total_reviews}
+                  rating={product?.average_rating}
+                  totalReviews={product?.total_reviews}
                 />
-              </div>
+              </div> */}
             </div>
             <div className="flex items-center mb-8">
               <Price
@@ -196,7 +212,7 @@ const ProductDetails = () => {
                   <div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border h-11 border-border">
                     <Button
                       variant="outline"
-                      // onClick={() => setItem(item - 1)}
+                      onClick={() => handleDec()}
                       // disabled={item === 1}
                       className="border-0 border-e border-border rounded-none flex items-center justify-center h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-foreground hover:text-muted-foreground"
                     >
@@ -206,12 +222,12 @@ const ProductDetails = () => {
                     </Button>
 
                     <p className="font-semibold flex items-center justify-center transition-colors duration-250 ease-in-out cursor-default shrink-0 text-base text-foreground w-10 md:w-20 xl:w-22">
-                      1
+                      {qty}
                     </p>
 
                     <Button
                       variant="outline"
-                      // onClick={() => setItem(item + 1)}
+                      onClick={() => handleInc()}
                       // disabled={selectVariant?.quantity <= item}
                       className="border-0 border-s border-border rounded-none flex items-center justify-center h-full shrink-0 transition ease-in-out duration-300 focus:outline-none w-10 md:w-12 text-foreground hover:text-muted-foreground"
                     >
@@ -223,7 +239,11 @@ const ProductDetails = () => {
 
                   {/* Add to Cart Button */}
                   <Button
-                    //   onClick={() => handleAddToCart(item)}
+                    disabled={!product}
+                    onClick={() => {
+                      if(!product) return;
+                      handleAddToCart(product);
+                    }}
                     className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none px-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full h-11"
                     //   variant="create"
                   >
@@ -290,7 +310,7 @@ const ProductDetails = () => {
                       </span>
                       <p className="font-sans leading-5 text-sm text-muted-foreground">
                         Free shipping applies to all orders over shipping{" "}
-                        {formatPriceString("100")}
+                        {formatPriceString("300")}
                       </p>
                     </li>
                     <li className="flex items-center py-2">
@@ -325,21 +345,20 @@ const ProductDetails = () => {
                         Warranty not available for this item
                       </p>
                     </li>
-                    <li className="flex items-center py-2">
+                    {/* <li className="flex items-center py-2">
                       <span className="text-lg text-muted-foreground items-start mr-3">
                         <Sun />
                       </span>
                       <p className="font-sans leading-5 text-sm text-muted-foreground">
                         Guaranteed 100% organic from natural products.
                       </p>
-                    </li>
+                    </li> */}
                     <li className="flex items-center py-2">
                       <span className="text-lg text-muted-foreground items-start mr-3">
                         <MapPin />
                       </span>
                       <p className="font-sans leading-5 text-sm text-muted-foreground">
-                        Delivery from our pick point Boho One, Bridge Street
-                        West, Middlesbrough, North Yorkshire, TS2 1AE.
+                        Delivery from our pick point Asurali Market, 756137, Bhadrak, Odisha.
                       </p>
                     </li>
                   </ul>
@@ -458,23 +477,23 @@ const ProductDetails = () => {
             <Tabs defaultValue="reviews">
               <div className="border-b border-border">
                 <TabsList variant="line">
-                  <TabsTrigger value="reviews">Reviews</TabsTrigger>
+                  {/* <TabsTrigger value="reviews">Reviews</TabsTrigger> */}
                   <TabsTrigger value="description">Description</TabsTrigger>
                   {/* <TabsTrigger value="reports">Reports</TabsTrigger> */}
                 </TabsList>
               </div>
-              <TabsContent value="reviews">
+              {/* <TabsContent value="reviews">
                 <h3 className="sr-only">Reviews</h3>
-                {/* <ProductReviews reviews={reviews} /> */}
+                <ProductReviews reviews={reviews} />
                 <ProductReviews />
-              </TabsContent>
-              <TabsContent value="description">
+              </TabsContent> */}
+              {/* <TabsContent value="description"> */}
                 <h3 className="sr-only">Description</h3>
                 <p className="text-sm leading-6 text-muted-foreground md:leading-6 mb-3">
                   {product?.name}
                 </p>
                 <div className="text-sm text-muted-foreground [&_h4]:mt-5 [&_h4]:font-medium [&_h4]:text-foreground [&_li]:pl-2 [&_li::marker]:text-muted-foreground [&_p]:my-2 [&_p]:text-sm/6 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5 [&_ul]:text-sm/6 *:first:mt-0" />
-              </TabsContent>
+              {/* </TabsContent> */}
             </Tabs>
           </div>
         </div>
