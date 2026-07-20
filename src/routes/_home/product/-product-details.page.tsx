@@ -16,14 +16,14 @@ import {
   // Sun,
   Truck,
 } from "lucide-react";
-import { formatPriceString } from "@/app-utils/string-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 // import ProductReviews from "./-component/product-reviews.component";
 import { Route } from "./$productId";
 import { useProductDetails } from "./-queries/get-product-details.query";
-import { getImgUrl } from "@/app-utils/img-utils";
+import { getImgUrl } from "@/core/app-utils/img-utils";
 import { useState } from "react";
-import useCart from "@/stores/cart.store";
-import type { Product } from "@/interfaces/app-global.interface";
+import useCart from "@/core/stores/cart.store";
+import type { Product } from "@/core/interfaces/app-global.interface";
 
 const ProductDetails = () => {
   const [qty, setQty] = useState(1);

@@ -1,6 +1,6 @@
-import { getInitials } from "@/app-utils/string-utils";
-import { useAuthUserStore } from "@/stores/app-auth-user.store";
-import { useTokensStore } from "@/stores/app-tokens.store";
+import { getInitials } from "@/core/app-utils/string-utils";
+import { useAuthUserStore } from "@/core/stores/app-auth-user.store";
+import { useTokensStore } from "@/core/stores/app-tokens.store";
 import { Link, useLocation } from "@tanstack/react-router";
 import {
   ClipboardList,

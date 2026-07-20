@@ -1,6 +1,6 @@
 import { isRedirect, redirect } from "@tanstack/react-router";
-import { useTokensStore } from "@/stores/app-tokens.store";
-import { useAuthUserStore } from "@/stores/app-auth-user.store";
+import { useTokensStore } from "@/core/stores/app-tokens.store";
+import { useAuthUserStore } from "@/core/stores/app-auth-user.store";
 
 export const checkAuth = async () => {
   const accessToken = useTokensStore.getState().accessToken;

@@ -3,7 +3,7 @@ import { storeCustomizationSetting } from "../temp-data";
 import usePopularProductsStore from "./popular-products.store";
 // import type { PopularProd } from "./temp.data";
 import { useFetchPopularProds } from "../../-queries/get-popular-prod.query";
-import type { Product } from "@/interfaces/app-global.interface";
+import type { Product } from "@/core/interfaces/app-global.interface";
 
 const PopularProductsContent = () => {
   // const popularProducts = usePopularProductsStore((state) => state.products);

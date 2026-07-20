@@ -1,6 +1,6 @@
 import { api } from "@/api/api-client";
 import type { ApiResponse } from "@/api/api.interface";
-import type { Product } from "@/interfaces/app-global.interface";
+import type { Product } from "@/core/interfaces/app-global.interface";
 
 const HomeService = {
   getDiscountedProducts: async (): Promise<ApiResponse<Product[]>> => {

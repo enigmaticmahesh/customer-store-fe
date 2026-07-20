@@ -3,7 +3,7 @@ import { toast } from "sonner"
 import { InitialFormData, registerFormSchema } from "../-register.schemas"
 import type { RegisterFormData } from "../-register.interface"
 import { useRegisterUser } from "../-queries/register-user.query"
-import { apiErrorMsg } from "@/app-utils/error-utils"
+import { apiErrorMsg } from "@/core/app-utils/error-utils"
 import { useNavigate } from "@tanstack/react-router"
 
 const useRegisterForm = () => {

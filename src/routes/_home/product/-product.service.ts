@@ -1,5 +1,5 @@
 import { api } from "@/api/api-client";
-import type { Product } from "@/interfaces/app-global.interface";
+import type { Product } from "@/core/interfaces/app-global.interface";
 import type { ApiResponse } from "@/api/api.interface";
 
 const productService = {

@@ -1,6 +1,6 @@
 import CartDrawer from "@/components/custom/cart/cart-drawer.component";
 import { CART_EVENTS } from "@/configs/event.config";
-import useCart from "@/stores/cart.store";
+import useCart from "@/core/stores/cart.store";
 // import { Link } from "@tanstack/react-router";
 import { ShoppingCart } from "lucide-react";
 

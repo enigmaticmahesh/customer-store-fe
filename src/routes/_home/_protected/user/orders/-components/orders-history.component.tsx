@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router"
 import type { Order } from "../-temp.data"
-import { getReadableDate } from "@/app-utils/date-utils"
-import { formatPriceString } from "@/app-utils/string-utils"
+import { getReadableDate } from "@/core/app-utils/date-utils"
+import { formatPriceString } from "@/core/app-utils/string-utils"
 
 const OrdersHistory = ({order}: {order: Order}) => {
     return (

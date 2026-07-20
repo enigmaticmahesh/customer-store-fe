@@ -1,9 +1,9 @@
-import { formatPriceString } from "@/app-utils/string-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 import CouponCodeInput from "./coupon-code-input.component";
 import { ShoppingBag } from "lucide-react";
 import CartItem from "@/components/custom/cart/cart-item";
 // import { items } from "../-temp.data"
-import useCart from "@/stores/cart.store";
+import useCart from "@/core/stores/cart.store";
 
 const CheckoutCartSection = () => {
   const cartItemIds = useCart((state) => state.cartItemIds);

@@ -1,8 +1,8 @@
 import { useStore, type StoreApi } from "zustand";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import QuickViewProduct from "./quick-view-product.component";
-import type { BaseProdStoreContract } from "@/interfaces/common-prod-list.interface";
-import type { AtLeastOne, Product } from "@/interfaces/app-global.interface";
+import type { BaseProdStoreContract } from "@/core/interfaces/common-prod-list.interface";
+import type { AtLeastOne, Product } from "@/core/interfaces/app-global.interface";
 
 type StoreType = AtLeastOne<BaseProdStoreContract> & {
   quickView: boolean;

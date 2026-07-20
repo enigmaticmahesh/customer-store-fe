@@ -1,5 +1,5 @@
-import type { AuthTokens, TokensStore } from "@/interfaces/app-auth.interface";
-import { EmptyAuthTokens } from "@/schemas/app-auth.schema";
+import type { AuthTokens, TokensStore } from "@/core/interfaces/app-auth.interface";
+import { EmptyAuthTokens } from "@/core/schemas/app-auth.schema";
 import { create } from "zustand";
 import { persist, createJSONStorage } from 'zustand/middleware'
 

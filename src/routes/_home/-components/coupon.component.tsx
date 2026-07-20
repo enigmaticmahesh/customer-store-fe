@@ -1,7 +1,7 @@
 import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import { coupons } from "./temp-data";
-import { isFutureDate } from "@/app-utils/date-utils";
-import { formatPriceString } from "@/app-utils/string-utils";
+import { isFutureDate } from "@/core/app-utils/date-utils";
+import { formatPriceString } from "@/core/app-utils/string-utils";
 
 const Coupon = ({ couponInHome = false }: { couponInHome: boolean }) => {
   if (couponInHome) {

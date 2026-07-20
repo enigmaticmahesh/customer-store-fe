@@ -1,4 +1,4 @@
-import useCart from "@/stores/cart.store";
+import useCart from "@/core/stores/cart.store";
 
 const useCartItem = (itemId: string) => {
   const itemImg = useCart((state) => state.cartItemsTracker.get(itemId)?.img);

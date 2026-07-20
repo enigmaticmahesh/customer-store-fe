@@ -1,8 +1,8 @@
-import { getInitials } from "@/app-utils/string-utils";
+import { getInitials } from "@/core/app-utils/string-utils";
 // import ImageWithFallback from "@/components/custom/image-with-fallback.component";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useAuthUserStore } from "@/stores/app-auth-user.store";
-import { useTokensStore } from "@/stores/app-tokens.store";
+import { useAuthUserStore } from "@/core/stores/app-auth-user.store";
+import { useTokensStore } from "@/core/stores/app-tokens.store";
 import { Link } from "@tanstack/react-router";
 import {
   // Bell,
