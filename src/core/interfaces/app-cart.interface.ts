@@ -16,9 +16,9 @@ export interface CartState {
 }
 
 export interface CartStoreFuncs {
-  createCartItem: (product: Product, qty?: number) => CartItem;
+  createCartItem: (product: Product) => CartItem;
   // getCartItemQty: (itemId: number) => number;
-  addToCart: (product: Product, qty?: number) => void;
+  addToCart: (product: Product) => void;
   removeFromCart: (itemId: string) => void;
   isProdOnCart: (prodId: number) => boolean;
   incQty: (itemId: string) => void;

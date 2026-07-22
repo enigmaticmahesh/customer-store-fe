@@ -18,27 +18,27 @@ const useCart = create<CartStore>((set, get) => ({
   ...InitialCartData,
   // updateStore: (data) => set((state) => ({ ...state, ...data })),
   resetStore: () => set((state) => ({ ...state, ...InitialCartData })),
-  createCartItem: (product, qty = 1) => {
+  createCartItem: (product) => {
     const cartItem: CartItem = {
       id: product.id,
       img: getImgUrl(product.sku, product.id, 1),
       price: product.mrp,
-      qty,
-      amount: String(qty * Number(product.mrp)),
+      qty: 1,
+      amount: product.mrp,
       name: product.name,
     };
 
     return cartItem;
   },
   isProdOnCart: (prodId) => get().cartItemsTracker.has(prodId.toString()),
-  addToCart: (product, qty = 1) => {
+  addToCart: (product) => {
     if (get().isProdOnCart(product.id)) {
       toast.warning("This product is already present in the cart.");
       return;
     }
 
     // Create cart item
-    const cartItem = get().createCartItem(product, qty);
+    const cartItem = get().createCartItem(product);
     // Create new tracker
     const tracker = new Map(get().cartItemsTracker);
     tracker.set(product.id.toString(), cartItem);

@@ -9,8 +9,8 @@ import {
   Home,
   IndianRupee,
   MapPin,
-  Minus,
-  Plus,
+  // Minus,
+  // Plus,
   Repeat,
   ShieldOff,
   // Sun,
@@ -21,14 +21,17 @@ import { formatPriceString } from "@/core/app-utils/string-utils";
 import { Route } from "./$productId";
 import { useProductDetails } from "./-queries/get-product-details.query";
 import { getImgUrl } from "@/core/app-utils/img-utils";
-import { useState } from "react";
+// import { useState } from "react";
 import useCart from "@/core/stores/cart.store";
 import type { Product } from "@/core/interfaces/app-global.interface";
 
 const ProductDetails = () => {
-  const [qty, setQty] = useState(1);
+  // const [qty, setQty] = useState(1);
   const addToCart = useCart((state) => state.addToCart);
   const { productId } = Route.useParams();
+  const prodId = useCart(
+    (state) => state.cartItemsTracker.get(productId.toString())?.id,
+  );
   const {data} = useProductDetails(productId);
   const product = data?.data;
   const stockUi = () => {
@@ -44,15 +47,15 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = (product: Product) => {
-    addToCart(product, qty);
+    addToCart(product);
   };
 
-  const handleInc = () => {
-    setQty((prev) => prev + 1);
-  };
-  const handleDec = () => {
-    setQty((prev) => Math.max(1, prev - 1)); // Prevent going below 1
-  };
+  // const handleInc = () => {
+  //   setQty((prev) => prev + 1);
+  // };
+  // const handleDec = () => {
+  //   setQty((prev) => Math.max(1, prev - 1)); // Prevent going below 1
+  // };
 
   return (
     <div className="bg-background px-0">
@@ -207,9 +210,9 @@ const ProductDetails = () => {
 
             <div>
               <div className="flex items-center mt-4">
-                <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 w-full">
+                <div className="grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 w-full">
                   {/* Quantity Selector */}
-                  <div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border h-11 border-border">
+                  {/* <div className="group flex items-center justify-between rounded-md overflow-hidden shrink-0 border h-11 border-border">
                     <Button
                       variant="outline"
                       onClick={() => handleDec()}
@@ -235,11 +238,11 @@ const ProductDetails = () => {
                         <Plus />
                       </span>
                     </Button>
-                  </div>
+                  </div> */}
 
                   {/* Add to Cart Button */}
                   <Button
-                    disabled={!product}
+                    disabled={Boolean(prodId)}
                     onClick={() => {
                       if(!product) return;
                       handleAddToCart(product);
